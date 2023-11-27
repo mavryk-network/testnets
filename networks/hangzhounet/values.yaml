@@ -1,24 +1,24 @@
 accounts:
   ecadlabs:
-    # tz1cjyja1TU6fiyiFav3mFAdnDsCReJ12hPD
+    # mv1R7T3AKpmTEzkwPuUu14rewEjAz2qbT5tw
     key: edpkvP1NXoo8vhYbPSvXdy466EHoYWBpf6zmjghB2p3DwJPjbB5nsf
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   smartpy:
-    # tz1SMARcpWCydHsGgz4MRoK9NkbpBmmUAfNe
+    # mv1EidjD8sWLCZeVqJdCfd1AXmTnkAEe1dGF
     key: edpkuyuJirNU14hEma1u7f3Qhx7uHZxzuXDyvmjRwaAsFFFqYGkzHx
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   tezosil:
-    # tz1VWasoyFGAWZt5K2qZRzP3cWzv3z7MMhP8
+    # mv1Ht4BQHcZX5qfJTMQQfp54mXrtcNagwUAL
     key: edpkvQj8r3YigN6QFsDRaKQCoxDNhKK4whDUkFkw6Gom36d86uhEbv
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   pirbo:
-    # tz1PirbogVqfmBT9XCuYJ1KnDx4bnMSYfGru
+    # mv1C6KuPzs92LTENfXUPXq1oNxvaLjxJ9p8b
     key: edpkvaQpRgsSGPJSY91sjNArLMgpTUHmmfkvuSekwos43uze2H2EFM
     type: public
     is_bootstrap_baker_account: true
@@ -29,7 +29,7 @@ accounts:
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   blockwatch:
-    # tz1cXeGHP8Urj2pQRwpAkCdPGbCdqFUPsQwU
+    # mv1Qu7ZshVnDJJbdaGP1z2KQRc4cPdwRAFNQ
     key: edpktqRmZsGN2WEyghfqrZvn8c7xmA1xs3vDta71CsCjtHiSRMkG1z
     type: public
     is_bootstrap_baker_account: true
@@ -45,76 +45,76 @@ accounts:
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   utdrmac:
-    # tz1X9arq5VDQdeUmgsrz7C8CxWVzVAJFbGaB
+    # mv1KX4ARPrWmCvFzqCRqM1pE7XMy3YkWa6Mv
     key: edpkvWPKvk8A8tk97Sr8CbyKJLekuHYwQ5R2rJ3Qe23jvtewaRAdYp
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   primate:
-    # tz1S9Z6VAERuwQ1QQ6FqnREiT99ZB9wdGE9z
+    # mv1EX2Q5UbjGWfndYQph2EvjcA1XjYSGttGa
     key: edpkvM7PAJiTMTAeRB1W77U5jF17aCV1vkBoKPScs8vmAd56t2BE72
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   N1029676:
-    # tz1N1W47vNFSBPqnWbUoAw65LFHzv2PGqS4x
+    # mv1ANyMiEjYnkfd1ev3eQkn6VG9yUQuprfNY
     key: edpkuZ6pf5esZLnVJ7XGZbfQ6s9yFsrGW49nhrRVrCZ6ghqRvGR1n5
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   vincent_xtzmaster:
-    # tz1Kr7EBSj86kbQFgCSLKo8JtvFQvYEU4SuH
+    # mv18DaXmm6RTKsBUpX1BZcpL3w7PUvjKVPWA
     key: edpkuVw1DAAJ1bucCkNJ48e9L8Md8meXogKnMUp1Z6sey1NFhCxmvU
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   neoktalabs_julien:
-    # tz1gECNgGXb4vzsEhAvX6a72AsAGJiQS8DLf
+    # mv1UbfgGattRWGeTqVVNLPo3Kt2Es6wRKiGq
     key: edpkv99446esWVTgGSNsfeZCpeLYbq1e69tae3Fpw22GXcMHQeRSVg
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   coredump:
-    # tz1Wn7JnLVf7PpTbaLQNzmNaF9z9UudWHGBR
+    # mv1K9acNerxTy6EpieyEEb4bQAr83JABwCJ8
     key: edpkttKzcNNCjanS2De2Nagnpg9Bk1SoNhxDC1hqCFvHHFjfeeBK1m
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   german:
     # german wants to be a baker, but not bootstrap
-    # tz1TGKSrZrBpND3PELJ43nVdyadoeiM1WMzb
+    # mv1FdnkStDVAwUpcNeruHcBf8bVnD6rvNSik
     key: edpktjm6QS9TwK6z9VX36Gucknwag94EzfCiu741i8q373W4V4y24R
     type: public
     is_bootstrap_baker_account: false
     bootstrap_balance: "2000000000000"
   ping:
-    # tz1MvCE9dczhoij2bd4sLL2AfVuMtWfFAoCN
+    # mv1AHfXjwzJ4NzWFjwdia9iBpWmLSu6rm2n8
     key: edpkvZcJNTNG3q4A4N42eNPPCtUDT5jffMCYwiD7QLzRGZ4CQR8pyj
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
   saroupille:
     # françois wants to be a baker, but not bootstrap
-    # tz1QXAAasy8TciwfvDC4a7MWo1tm3K37uN9Y
+    # mv1CtdUBCLRpBziu4Xkuow3Xx2kjbhTieU5Z
     key: edpkvMBeXH4h8H97b8qfPkv2mA9TE6McfsffLGgG2Jg5nhUESaVt5J
     type: public
     is_bootstrap_baker_account: false
     bootstrap_balance: "2000000000000"
   saroupille2:
     # françois wants to be a baker, but not bootstrap
-    # tz1ZaHCkooCR63bSsQhLf8WLKj9sQG5RTthP
+    # mv1MwkWM8AVmfKNg1jGBtxCMUk1qxeaGtzCz
     key: edpkueS4HbicvgHo1Y9uPp6ZaZ8kgMJBJg2uB4Zm539Wf7qvJA5g1U
     type: public
     is_bootstrap_baker_account: false
     bootstrap_balance: "2000000000000"
   victor:
-    # tz1VicarbXb4uAY12pQBAREHUimYCxjfKbLa
+    # mv1J65tSuttRUSKEB8y2QEvJdjdWmMHGX1ct
     key: edpkujMeTHyUEK4gqCBXHDL9yXYiHnJJ4C58AHnmgAKyfFZXcBRngB
     type: public
     is_bootstrap_baker_account: true
     bootstrap_balance: "2000000000000"
-  tz1THUNA:
-    # tz1THUNARo58aD5YdNGYPnWNnvd8yHPrMdsF 
+  mv1Fewfk:
+    # mv1FewfkkANV9UrmmgqPdcCPwwV7XftdvhLS 
     # Romain's faucet
     key: edpkuh3WSwziyd6nXqDXeh48vZHp5ETxFd43EdkbzhmW98BvuLXK81
     type: public
@@ -122,28 +122,28 @@ accounts:
     bootstrap_balance: "500000000000000"
   julien:
     # for stress testing
-    # tz1PicoD6HTZFNkRpN84VFUvdpT7D6xoR2QD
+    # mv1C666oQekupeXexgguj5AwnqK5mVRTKek6
     key: edpktnArvYkSArFUGiBN4cmDmor9qwyTFCbAKEMbeSdT3z563SdTXm
     type: public
     is_bootstrap_baker_account: false
     bootstrap_balance: "500000000000000"
   bakingbadfaucet:
     # baking bad maintains a telegram faucet bot
-    # tz1KhnTgwoRRALBX6vRHRnydDGSBFsWtcJxc
+    # mv185FmHGAimjbxkFEz8fcfeNHJ9pFwLquQW
     key: edpkuFRauFAdhipQu9s4xmfNJWmtLxPKpoaoG41gYGq5AgUA43Vxqx
     type: public
     is_bootstrap_baker_account: false
     bootstrap_balance: "500000000000000"
   oxheadbaker:
     # Oxhead Alpha's baker hosted in teztnets.xyz infra
-    # tz1foXHgRzdYdaLgX6XhpZGxbBv42LZ6ubvE
+    # mv1UAzbGkMvuCr7ufR6Z4NxykCn2aj5qTUjm
     bootstrap_balance: "1000000000000"
     is_bootstrap_baker_account: true
     type: secret
     # key injected by pulumi
   oxheadfree:
     # an account with a lot of money in it
-    # tz1foxFdz2ieSj8P9YxKYBTEqYbgFXXEeiQY
+    # mv1UBRZEJQ211zucHsXAn19FzZTeov3DSmbm
     key: edpkubSgCoMjB2a6vPWRNRHfGa6HUFfFyEUKoEQhWC8osnav8QzBdJ
     bootstrap_balance: "5000000000000000"
     is_bootstrap_baker_account: false

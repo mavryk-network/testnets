@@ -1,5 +1,5 @@
 tezos_k8s_images:
-  utils: ghcr.io/oxheadalpha/tezos-k8s-utils:bake_remotely
+  utils: ghcr.io/mavryk-network/mavryk-k8s-utils:6.25.0
 signers:
   tezos-signer-0:
     sign_for_accounts:
@@ -247,7 +247,7 @@ images: {}
 
 accounts:
   teztnetsbaker:
-    # tz1TnEtqDV9mZyts2pfMy6Jw1BTPs4LMjL8M
+    # mv1UAzbGkMvuCr7ufR6Z4NxykCn2aj5qTUjm
     bootstrap_balance: "7500000000000"
     is_bootstrap_baker_account: true
     type: secret
@@ -280,14 +280,14 @@ accounts:
     bootstrap_balance: "100000000000"
   oxheadfree:
     # an account with a lot of money in it
-    # tz1foxFdz2ieSj8P9YxKYBTEqYbgFXXEeiQY
+    # mv1UBRZEJQ211zucHsXAn19FzZTeov3DSmbm
     key: edpkubSgCoMjB2a6vPWRNRHfGa6HUFfFyEUKoEQhWC8osnav8QzBdJ
     bootstrap_balance: "5000000000000000"
     is_bootstrap_baker_account: false
     type: public
   faucet:
     # faucet on teztnets.xyz platform
-    # tz1a4GT7THHaGDiTxgXoatDWcZfJ5j29z5RC
+    # mv1NRjkhmeavqVVh716ephuXmaXGe7Y6UyzQ
     key: edpkvGYHoY5kwq13Ak6r4fLa1GGSHKJZVe7xJFV6ZgHwdZeaHy3WZj
     bootstrap_balance: "200000000000000"
     is_bootstrap_baker_account: false

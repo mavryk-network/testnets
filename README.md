@@ -6,11 +6,11 @@ See [teztnets.com](https://teztnets.com) for the list of active Teztnets.
 
 ## Features
 
-### Based on tezos-k8s
+### Based on mavryk-k8s
 
-[tezos-k8s](https://github.com/oxheadalpha/tezos-k8s) is a framework to deploy Tezos nodes or chains using Kubernetes and Helm.
+[mavryk-k8s](https://github.com/mavryk-network/mavryk-k8s) is a framework to deploy Tezos nodes or chains using Kubernetes and Helm.
 
-See the [tezos-k8s documentation](https://github.com/oxheadalpha/tezos-k8s/blob/master/README.md)
+See the [mavryk-k8s documentation](https://github.com/mavryk-network/mavryk-k8s/blob/master/README.md)
 
 ### Faucet support
 
@@ -50,7 +50,7 @@ Each Teztnet is defined within a subdirectory of the `/networks` directory in th
 
 - A Helm chart `values.yaml` file
 - Optionally, a Helm chart `faucet_values.yaml` file if deploying a faucet
-- Optionally, a submodule of tezos-k8s (in case you need an unreleased or custom version of the tezos-k8s software)
+- Optionally, a submodule of mavryk-k8s (in case you need an unreleased or custom version of the mavryk-k8s software)
 
 ### Helm chart values.yaml
 
@@ -65,7 +65,7 @@ The Helm chart values.yaml lets you customize your chain in many ways:
 
 Look in any Teztnet directory's values.yaml file in [`/networks`](/networks) for reference as to how to configure your own Teztnet.
 
-The [default Helm values.yaml](https://github.com/oxheadalpha/tezos-k8s/blob/master/charts/tezos/values.yaml) has details on every possible way to customize your teztnet.
+The [default Helm values.yaml](https://github.com/mavryk-network/mavryk-k8s/blob/master/charts/tezos/values.yaml) has details on every possible way to customize your teztnet.
 
 ## Teztnets.com website
 

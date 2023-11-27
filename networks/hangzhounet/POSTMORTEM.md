@@ -44,7 +44,7 @@ Baking bad maintains a faucet telegram bot. We should always top it up on every 
 
 ```
 Pub edpkuFRauFAdhipQu9s4xmfNJWmtLxPKpoaoG41gYGq5AgUA43Vxqx
-Addr tz1KhnTgwoRRALBX6vRHRnydDGSBFsWtcJxc
+Addr mv185FmHGAimjbxkFEz8fcfeNHJ9pFwLquQW
 ```
 
 Note that the usdtznet fork of hangzhounet has it configured already.
