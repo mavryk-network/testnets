@@ -1,4 +1,4 @@
-## teztnets.com page
+## testnets.mavryk.org page
 
 1. Github Action Builds markdown files from jinja templates.
 1. Rendered markdown moved to the website folder

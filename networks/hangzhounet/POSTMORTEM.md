@@ -14,7 +14,7 @@ No action needed: when doing I network launch, I will be copy-pasting from H whi
 
 ### Wait until baking the network parameters into tezos-node binary
 
-It is probably better to let bootstrap bakers gather their parameters from `--network https://teztnets.xyz/blah` for a while. This would allow for emergency network restarts, where the bakers just have to reboot the node to pick up the new, correct chain. Only one release later should the chain params be hardcoded.
+It is probably better to let bootstrap bakers gather their parameters from `--network https://testnets.mavryk.org/blah` for a while. This would allow for emergency network restarts, where the bakers just have to reboot the node to pick up the new, correct chain. Only one release later should the chain params be hardcoded.
 
 ### Wrong value for bootstrap paran
 

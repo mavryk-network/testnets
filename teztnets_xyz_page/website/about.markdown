@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About Teztnets.com
+title: About testnets.mavryk.org
 permalink: /about/
 ---
 
@@ -16,11 +16,11 @@ We have three kind of testnets:
 
 Teztnets is powered by [mavryk-k8s](https://mavryk-k8s.xyz), a collection of helm charts maintained by Mavryk Dynamics. It is deployed with [Pulumi](https://pulumi.com).
 
-The [Teztnets Status page](https://status.teztnets.com) is powered by [Pyrometer](https://gitlab.com/tezos-kiln/pyrometer), a Tezos monitoring tool.
+The [Teztnets Status page](https://status.testnets.mavryk.org) is powered by [Pyrometer](https://gitlab.com/tezos-kiln/pyrometer), a Tezos monitoring tool.
 
 The [github repo](https://github.com/tacoinfra/teztnets) has more information regarding these testnets, how they are configured, and how to deploy new ones.
 
-Relevant Medium articles announcing Teztnets.com features:
+Relevant Medium articles announcing testnets.mavryk.org features:
 
 * [Intro to Mondaynet and Dailynet](https://medium.com/the-aleph/continuous-tezos-protocol-testing-with-dailynet-and-mondaynet-92d4b084a9f6)
 * [Intro to Ghostnet](https://medium.com/the-aleph/introducing-ghostnet-1bf39976e61f)

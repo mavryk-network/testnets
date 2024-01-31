@@ -286,7 +286,7 @@ accounts:
     is_bootstrap_baker_account: false
     type: public
   faucet:
-    # faucet on teztnets.xyz platform
+    # faucet on testnets.mavryk.org platform
     # mv1NRjkhmeavqVVh716ephuXmaXGe7Y6UyzQ
     key: edpkvGYHoY5kwq13Ak6r4fLa1GGSHKJZVe7xJFV6ZgHwdZeaHy3WZj
     bootstrap_balance: "200000000000000"

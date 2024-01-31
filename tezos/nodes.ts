@@ -226,8 +226,8 @@ location ~ ^/chains/([a-zA-Z]+)/(checkpoint|levels) {
       },
       { provider: provider }
     )
-    // Temp teztnets.xyz
-    const rpcFqdnXyz = "rpc.ghostnet.teztnets.xyz";
+    // Temp testnets.mavryk.org
+    const rpcFqdnXyz = "rpc.ghostnet.testnets.mavryk.org";
     new k8s.networking.v1.Ingress(
       `${name}-ingress-xyz`,
       {
@@ -341,7 +341,7 @@ location ~ ^/chains/([a-zA-Z]+)/(checkpoint|levels) {
           namespace: this.namespace.metadata.name,
           name: `${name}-xyz`,
           annotations: {
-            "external-dns.alpha.kubernetes.io/hostname": "ghostnet.teztnets.xyz",
+            "external-dns.alpha.kubernetes.io/hostname": "ghostnet.testnets.mavryk.org",
           },
         },
         spec: {
@@ -358,6 +358,6 @@ location ~ ^/chains/([a-zA-Z]+)/(checkpoint|levels) {
       },
       { provider: provider }
     )
-    // end temp teztnets.xyz
+    // end temp testnets.mavryk.org
   }
 }

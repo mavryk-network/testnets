@@ -54,7 +54,7 @@ new gcp.storage.BucketIAMMember("publicRead", {
 
 
 // Define your domain name and a suitable name for the managed zone
-const domainName = "teztnets.xyz";
+const domainName = "testnets.mavryk.org";
 const managedZoneName = "teztnets-zone";
 
 // Create a managed DNS zone
@@ -66,7 +66,7 @@ const dnsZone = new gcp.dns.ManagedZone(managedZoneName, {
 
 
 // Define another domain name and a suitable name for the managed zone
-const domainNameCom = "teztnets.com";
+const domainNameCom = "testnets.mavryk.org";
 const managedZoneNameCom = "teztnetscom-zone";
 
 // Create a managed DNS zone
@@ -506,7 +506,7 @@ function createDomainRedirectIngress(srcDomain: string, destDomain: string): k8s
   }, { provider });
 }
 
-createDomainRedirectIngress("faucet.ghostnet.teztnets.xyz", "faucet.ghostnet.teztnets.com");
-createDomainRedirectIngress("faucet.oxfordnet.teztnets.xyz", "faucet.oxfordnet.teztnets.com");
-createDomainRedirectIngress("faucet.nairobinet.teztnets.xyz", "faucet.nairobinet.teztnets.com");
-createDomainRedirectIngress("status.teztnets.xyz", "status.teztnets.com");
+createDomainRedirectIngress("faucet.ghostnet.testnets.mavryk.org", "faucet.ghostnet.testnets.mavryk.org");
+createDomainRedirectIngress("faucet.oxfordnet.testnets.mavryk.org", "faucet.oxfordnet.testnets.mavryk.org");
+createDomainRedirectIngress("faucet.nairobinet.testnets.mavryk.org", "faucet.nairobinet.testnets.mavryk.org");
+createDomainRedirectIngress("status.testnets.mavryk.org", "status.testnets.mavryk.org");
