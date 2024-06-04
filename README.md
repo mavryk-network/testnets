@@ -18,7 +18,7 @@ We support the beacon-compatible Tezos Faucet.
 
 ### Injection of contracts at genesis
 
-A [collection of raw Michelson contracts](https://github.com/oxheadalpha/teztnets/tree/main/bootstrap_contracts) can be optionally deployed in any Teztnet at genesis.
+A [collection of raw Michelson contracts](https://github.com/mavryk-network/testnets/tree/main/bootstrap_contracts) can be optionally deployed in any Teztnet at genesis.
 
 ### Injection of Smart Rollups at genesis
 

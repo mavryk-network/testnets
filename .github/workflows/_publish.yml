@@ -57,7 +57,7 @@ jobs:
         with:
           deploy_key: ${{ secrets.TEZTNETS_COM_DEPLOY_KEY }}
           publish_dir: ./target/release
-          external_repository: oxheadalpha/teztnets
+          external_repository: mavryk-network/testnets
           enable_jekyll: true
 
       # End Temporary - deploy to testnets.mavryk.org

@@ -28,11 +28,11 @@ Considering we had 18 bootstrap bakers, 2 million tez per baker would have been 
 
 ### Fresh genesis hash
 
-I re-used the genesis block has from Granadanet but Romain [corrected me](https://github.com/oxheadalpha/teztnets/pull/51#discussion_r713088372).
+I re-used the genesis block has from Granadanet but Romain [corrected me](https://github.com/mavryk-network/testnets/pull/51#discussion_r713088372).
 
 It is better to generate a new hash. Must understand how to do it, and maybe find ways to automate new hash creation.
 
-The [PR](https://github.com/oxheadalpha/teztnets/pull/51) has more comments from Romain.
+The [PR](https://github.com/mavryk-network/testnets/pull/51) has more comments from Romain.
 
 ### Block 0 protocol should be mainnet
 
