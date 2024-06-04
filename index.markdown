@@ -2,11 +2,11 @@
 layout: home
 ---
 
-Current testnets for the [Tezos](https://tezos.com) blockchain are listed here. [Read more](about/).
+Current testnets for the [Mavryk](https://mavryk.org) blockchain are listed here. [Read more](about/).
 
-This list of Teztnets is also available in [json format](https://testnets.mavryk.org/teztnets.json).
+This list of Testnets is also available in [json format](https://testnets.mavryk.org/teztnets.json).
 
-# Long-running Teztnets
+# Long-running Testnets
 
 If you are not sure, pick this one.
 
@@ -15,9 +15,9 @@ If you are not sure, pick this one.
 
 
 
-# Protocol Teztnets
+# Protocol Testnets
 
-Testnets deployed specifically to test new Tezos protocol proposals.
+Testnets deployed specifically to test new Mavryk protocol proposals.
 
 | | Activated on | Faucet |
 |-------|---------------------|--|
@@ -25,9 +25,9 @@ Testnets deployed specifically to test new Tezos protocol proposals.
 
 
 
-# Periodic Teztnets
+# Periodic Testnets
 
-Testnets that restart regularly and track the development of the master branch of [Octez repo](https://gitlab.com/tezos/tezos/).
+Testnets that restart regularly and track the development of the master branch of [Mavkit repo](https://gitlab.com/mavryk-network/mavryk-protocol/).
  
 ☠️ You probably don't want this unless you are a core protocol developer.
 
