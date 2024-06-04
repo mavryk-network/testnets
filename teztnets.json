@@ -1,0 +1,23 @@
+{
+  "atlasnet": {
+    "category": "Protocol Teztnets",
+    "chain_name": "MAVRYK_ATLASNET_2024-02-23T10:39:51Z",
+    "description": "Test Chain for the Atlas Protocol Proposal.",
+    "docker_build": "mavrykdynamics/mavryk:v19.3",
+    "faucet_url": "https://atlasnet.faucet.mavryk.network",
+    "git_ref": "b1e1def27039b8cede461b6614af1addefbd69da",
+    "human_name": "Atlasnet",
+    "indexers": [
+      {
+        "name": "MvKT",
+        "url": "https://atlasnet.api.mavryk.network"
+      }
+    ],
+    "last_baking_daemon": "PtAtLas",
+    "masked_from_main_page": false,
+    "network_url": "https://testnets.mavryk.org/atlasnet",
+    "rpc_url": "https://atlasnet.rpc.mavryk.network",
+    "rpc_urls": [],
+    "activated_on": "2024-02-23"
+  }
+}
