@@ -16,7 +16,7 @@ jobs:
 
   publish:
     name: testnets.mavryk.org build
-    needs: up
+    # needs: up
     uses: ./.github/workflows/_publish.yml
     secrets: inherit
     with:
