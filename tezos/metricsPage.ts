@@ -25,9 +25,9 @@ const deployMetricsPage = async (provider: k8s.Provider, params: Parameters) => 
   }
 
   // Create a single ConfigMap with all dashboard contents
-  new k8s.core.v1.ConfigMap('octez-node-metrics', {
+  new k8s.core.v1.ConfigMap('mavkit-node-metrics', {
     metadata: {
-      name: 'octez-node-metrics',
+      name: 'mavkit-node-metrics',
       namespace: 'monitoring',
       labels: {
         grafana_dashboard: '1',

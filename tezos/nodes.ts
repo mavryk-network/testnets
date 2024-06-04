@@ -10,8 +10,8 @@ export interface TezosNodesParameters {
   readonly archivePvcSize: string;
   readonly chartRepoVersion?: string;
   readonly chartPath?: string;
-  readonly octezRollingVersion: string;
-  readonly octezArchiveVersion: string;
+  readonly mavkitRollingVersion: string;
+  readonly mavkitArchiveVersion: string;
 }
 
 export class TezosNodes extends pulumi.ComponentResource {
@@ -56,7 +56,7 @@ export class TezosNodes extends pulumi.ComponentResource {
         'rolling-node': {
           local_storage: true,
           images: {
-            octez: `tezos/tezos:${params.octezRollingVersion}`,
+            mavkit: `mavrykdynamics/mavryk-protocol:${params.mavkitRollingVersion}`,
           },
           instances: [{
             config: {
@@ -75,7 +75,7 @@ export class TezosNodes extends pulumi.ComponentResource {
         'archive-node': {
           storage_size: params.archivePvcSize,
           images: {
-            octez: `tezos/tezos:${params.octezArchiveVersion}`,
+            mavkit: `mavrykdynamics/mavryk-protocol:${params.mavkitArchiveVersion}`,
           },
           instances: [{
             config: {

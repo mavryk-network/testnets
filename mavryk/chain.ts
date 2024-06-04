@@ -6,9 +6,9 @@ import * as fs from "fs"
 import * as YAML from "yaml"
 const mime = require("mime")
 import { getChartParams } from './chartResolver'
-import { TezosImageResolver } from "./imageResolver"
+import { MavrykImageResolver } from "./imageResolver"
 
-export interface TezosParameters {
+export interface MavrykParameters {
   readonly activationBucket: gcp.storage.Bucket
   readonly bootstrapContracts?: string[]
   readonly category: string
@@ -29,14 +29,14 @@ const domainName = 'testnets.mavryk.org';
 const domainNameXyz = 'testnets.mavryk.org';
 
 /**
- * Deploy a tezos-k8s topology in a k8s cluster.
+ * Deploy a mavryk-k8s topology in a k8s cluster.
  * Supports either local charts or charts from a repo
  */
 
-export class TezosChain extends pulumi.ComponentResource {
+export class MavrykChain extends pulumi.ComponentResource {
   readonly name: string
-  readonly params: TezosParameters
-  readonly tezosHelmValues: any
+  readonly params: MavrykParameters
+  readonly mavrykHelmValues: any
   readonly namespace: k8s.core.v1.Namespace
   readonly dalNodes: {
     [name: string]: {
@@ -53,7 +53,7 @@ export class TezosChain extends pulumi.ComponentResource {
    * @param provider The Kubernetes cluster to deploy it into.
    */
   constructor(
-    params: TezosParameters,
+    params: MavrykParameters,
     provider: k8s.Provider,
     opts?: pulumi.ResourceOptions
   ) {
@@ -76,19 +76,19 @@ export class TezosChain extends pulumi.ComponentResource {
     } else {
       name = params.humanName.toLowerCase()
     }
-    super("pulumi-contrib:components:TezosChain", name, inputs, opts)
+    super("pulumi-contrib:components:MavrykChain", name, inputs, opts)
 
     this.params = params
     this.name = name
     this.dalNodes = {}
 
-    this.tezosHelmValues = YAML.parse(
+    this.mavrykHelmValues = YAML.parse(
       fs.readFileSync(this.params.helmValuesFile, "utf8")
     );
     if (this.name == "nairobinet") {
-      this.tezosHelmValues["accounts"]["oxheadbaker"]["key"] = this.params.bakingPrivateKey
+      this.mavrykHelmValues["accounts"]["oxheadbaker"]["key"] = this.params.bakingPrivateKey
     } else {
-      this.tezosHelmValues["accounts"]["teztnetsbaker"]["key"] = this.params.bakingPrivateKey
+      this.mavrykHelmValues["accounts"]["teztnetsbaker"]["key"] = this.params.bakingPrivateKey
     }
     if (this.params.schedule) {
       const deployDate = new Date(
@@ -97,8 +97,8 @@ export class TezosChain extends pulumi.ComponentResource {
           .prev()
           .toLocaleString()
       )
-      const imageResolver = new TezosImageResolver()
-      this.tezosHelmValues["images"]["mavkit"] =
+      const imageResolver = new MavrykImageResolver()
+      this.mavrykHelmValues["images"]["mavkit"] =
         pulumi
           .output(imageResolver.getLatestTagAsync(deployDate))
           .apply((tag) => `${imageResolver.image}:${tag}`)
@@ -108,9 +108,9 @@ export class TezosChain extends pulumi.ComponentResource {
       // This way, it won't mix with the existing mondaynet and will be able to sync.
       // Otherwise, the old broken mondaynet will mix with the new one and you'll never be able to produce
       // another genesis block.
-      this.tezosHelmValues["node_config_network"]["chain_name"] =
+      this.mavrykHelmValues["node_config_network"]["chain_name"] =
         `TEZOS-${this.params.humanName.toUpperCase()}-${deployDate.toISOString()}`
-      this.tezosHelmValues["node_config_network"]["genesis"]["timestamp"] = deployDate.toISOString();
+      this.mavrykHelmValues["node_config_network"]["genesis"]["timestamp"] = deployDate.toISOString();
     }
 
     if (params.bootstrapContracts) {
@@ -126,10 +126,10 @@ export class TezosChain extends pulumi.ComponentResource {
         });
 
         // Push the URL to the helm values
-        if (!this.tezosHelmValues["activation"]["bootstrap_contract_urls"]) {
-          this.tezosHelmValues["activation"]["bootstrap_contract_urls"] = [];
+        if (!this.mavrykHelmValues["activation"]["bootstrap_contract_urls"]) {
+          this.mavrykHelmValues["activation"]["bootstrap_contract_urls"] = [];
         }
-        this.tezosHelmValues["activation"]["bootstrap_contract_urls"].push(
+        this.mavrykHelmValues["activation"]["bootstrap_contract_urls"].push(
           pulumi.interpolate`https://storage.googleapis.com/${params.activationBucket.name}/${contractFullName}`
         );
       });
@@ -158,7 +158,7 @@ export class TezosChain extends pulumi.ComponentResource {
             "nginx.ingress.kubernetes.io/enable-cors": "true",
             "nginx.ingress.kubernetes.io/cors-allow-origin": "*",
           },
-          labels: { app: "tezos-node" },
+          labels: { app: "mavryk-node" },
         },
         spec: {
           rules: [
@@ -171,7 +171,7 @@ export class TezosChain extends pulumi.ComponentResource {
                     pathType: "Prefix",
                     backend: {
                       service: {
-                        name: "tezos-node-rpc",
+                        name: "mavryk-node-rpc",
                         port: {
                           name: "rpc",
                         },
@@ -208,7 +208,7 @@ export class TezosChain extends pulumi.ComponentResource {
             "nginx.ingress.kubernetes.io/enable-cors": "true",
             "nginx.ingress.kubernetes.io/cors-allow-origin": "*",
           },
-          labels: { app: "tezos-node" },
+          labels: { app: "mavryk-node" },
         },
         spec: {
           rules: [
@@ -221,7 +221,7 @@ export class TezosChain extends pulumi.ComponentResource {
                     pathType: "Prefix",
                     backend: {
                       service: {
-                        name: "tezos-node-rpc",
+                        name: "mavryk-node-rpc",
                         port: {
                           name: "rpc",
                         },
@@ -246,8 +246,8 @@ export class TezosChain extends pulumi.ComponentResource {
 
     // Rollup
     if (
-      this.tezosHelmValues.smartRollupNodes &&
-      this.tezosHelmValues.smartRollupNodes.length != 0
+      this.mavrykHelmValues.smartRollupNodes &&
+      this.mavrykHelmValues.smartRollupNodes.length != 0
     ) {
       let rollupFqdn = `evm-rollup-node.${name}.${domainName}`
       let rollupIngressParams = {
@@ -269,7 +269,7 @@ export class TezosChain extends pulumi.ComponentResource {
           },
         ],
       }
-      this.tezosHelmValues.smartRollupNodes.evm.ingress = rollupIngressParams
+      this.mavrykHelmValues.smartRollupNodes.evm.ingress = rollupIngressParams
       let evmProxyFqdn = `evm.${name}.${domainName}`
       let evmProxyIngressParams = {
         enabled: true,
@@ -290,11 +290,11 @@ export class TezosChain extends pulumi.ComponentResource {
           },
         ],
       }
-      this.tezosHelmValues.smartRollupNodes.evm.evm_proxy.ingress =
+      this.mavrykHelmValues.smartRollupNodes.evm.evm_proxy.ingress =
         evmProxyIngressParams
     }
 
-    if (this.tezosHelmValues.dalNodes && this.tezosHelmValues.dalNodes.length !== 0) {
+    if (this.mavrykHelmValues.dalNodes && this.mavrykHelmValues.dalNodes.length !== 0) {
       // We define both DAL nodes: the bootstrap node for the network, and the attester.
       // This is different than the L1, where the same node does everything.
       // Gossipsub requires separation from the bootstrap node and the nodes that actually
@@ -327,7 +327,7 @@ export class TezosChain extends pulumi.ComponentResource {
           },
           tls: [{ hosts: [rpcFqdn], secretName: `${rpcFqdn}-secret` }],
         };
-        this.tezosHelmValues.dalNodes[dalNodeName].ingress = ingressParams;
+        this.mavrykHelmValues.dalNodes[dalNodeName].ingress = ingressParams;
 
         // Setting up GCP static IP address
         const staticIPName = `${name}-${dalNodeName}-ip`;
@@ -359,7 +359,7 @@ export class TezosChain extends pulumi.ComponentResource {
           }
         );
 
-        this.tezosHelmValues.dalNodes[dalNodeName].publicAddr = pulumi.interpolate`${staticIP.address}:${dalP2pPort}`;
+        this.mavrykHelmValues.dalNodes[dalNodeName].publicAddr = pulumi.interpolate`${staticIP.address}:${dalP2pPort}`;
         this.dalNodes[dalNodeName] = {
           humanName: humanName,
           rpc: `https://${rpcFqdn}`,
@@ -368,16 +368,16 @@ export class TezosChain extends pulumi.ComponentResource {
       })
 
       // Set bootstrap peers on the network config (specific to testnets)
-      this.tezosHelmValues.node_config_network.dal_config.bootstrap_peers = [
+      this.mavrykHelmValues.node_config_network.dal_config.bootstrap_peers = [
         `dal.${name}.${domainName}:11732`
       ];
     }
 
-    let chartParams = getChartParams(params, "tezos");
+    let chartParams = getChartParams(params, "mavryk");
     const chartValues: any = {
       ...chartParams,
       namespace: this.namespace.metadata.name,
-      values: this.tezosHelmValues,
+      values: this.mavrykHelmValues,
     }
     new k8s.helm.v3.Chart(
       name,
@@ -403,7 +403,7 @@ export class TezosChain extends pulumi.ComponentResource {
               protocol: "TCP",
             },
           ],
-          selector: { node_class: "tezos-baking-node" },
+          selector: { node_class: "mavryk-baking-node" },
           type: "LoadBalancer",
         },
       },
@@ -428,7 +428,7 @@ export class TezosChain extends pulumi.ComponentResource {
               protocol: "TCP",
             },
           ],
-          selector: { node_class: "tezos-baking-node" },
+          selector: { node_class: "mavryk-baking-node" },
           type: "LoadBalancer",
         },
       },
@@ -438,13 +438,13 @@ export class TezosChain extends pulumi.ComponentResource {
   }
 
   getDockerBuild(): string {
-    return this.tezosHelmValues["images"]["mavkit"]
+    return this.mavrykHelmValues["images"]["mavkit"]
   }
 
   getGitRef(): pulumi.Output<string> {
     // guessing git version or release version based on docker naming convention
     // This will fail if mavkit changes repo tagging convention.
-    let dockerBuild = pulumi.output(this.tezosHelmValues["images"]["mavkit"])
+    let dockerBuild = pulumi.output(this.mavrykHelmValues["images"]["mavkit"])
     return dockerBuild.apply((s: string) => {
       let o = s.split(":")[1]
       if (s.includes("master_")) {
@@ -459,8 +459,8 @@ export class TezosChain extends pulumi.ComponentResource {
   }
   getRollupUrls(): string[] {
     if (
-      this.tezosHelmValues.smartRollupNodes &&
-      this.tezosHelmValues.smartRollupNodes.length != 0
+      this.mavrykHelmValues.smartRollupNodes &&
+      this.mavrykHelmValues.smartRollupNodes.length != 0
     ) {
       return [`https://evm-rollup-node.${this.name}.${domainName}`]
     }
@@ -468,8 +468,8 @@ export class TezosChain extends pulumi.ComponentResource {
   }
   getEvmProxyUrls(): string[] {
     if (
-      this.tezosHelmValues.smartRollupNodes &&
-      this.tezosHelmValues.smartRollupNodes.length != 0
+      this.mavrykHelmValues.smartRollupNodes &&
+      this.mavrykHelmValues.smartRollupNodes.length != 0
     ) {
       return [`https://evm.${this.name}.${domainName}`]
     }
@@ -480,6 +480,6 @@ export class TezosChain extends pulumi.ComponentResource {
   }
 
   getLastBakingDaemon(): string {
-    return this.tezosHelmValues["protocols"].slice(-1)[0]["command"]
+    return this.mavrykHelmValues["protocols"].slice(-1)[0]["command"]
   }
 }

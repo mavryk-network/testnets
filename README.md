@@ -22,7 +22,7 @@ A [collection of raw Michelson contracts](https://github.com/mavryk-network/test
 
 ### Injection of Smart Rollups at genesis
 
-Rollups can be injected at genesis of your test chain. Teztnets supports extraction of the EVM Rollup from the Octez container, and its injection at a predetermined address.
+Rollups can be injected at genesis of your test chain. Teztnets supports extraction of the EVM Rollup from the Mavkit container, and its injection at a predetermined address.
 
 ### Bootstrap baker and bootstrap p2p endpoint
 
@@ -34,7 +34,7 @@ Example:
 
 ### `--network` endpoint for Tezos node
 
-Tezos nodes supports downloading of network specification from a json endpoint: `octez-node config init --network https://testnets.mavryk.org/<TEZTNET NAME>`
+Tezos nodes supports downloading of network specification from a json endpoint: `mavkit-node config init --network https://testnets.mavryk.org/<TEZTNET NAME>`
 
 The Teztnet platform creates and exposes such endpoints.
 

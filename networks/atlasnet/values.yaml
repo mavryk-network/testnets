@@ -131,7 +131,7 @@ nodes:
             cors-origin: [ "*" ]
         is_bootstrap_node: true
     runs:
-      - octez_node
+      - mavkit_node
       - baker
       - accuser
       - vdf
@@ -145,7 +145,7 @@ rolling_snapshot_url: null
 rolling_tarball_url: null
 archive_tarball_url: null
 images:
-  octez: mavrykdynamics/mavryk:v19.1
+  mavkit: mavrykdynamics/mavryk:v19.1
 
 protocols:
   - command: PtAtlas

@@ -21,15 +21,15 @@ for network_name in networks:
 # group by category for human rendering
 # Order manually. Start with long-running.
 category_desc = {
-    "Long-running Teztnets": "If you are not sure, pick this one.",
-    "Protocol Teztnets": "Testnets deployed specifically to test new Tezos protocol proposals.",
-    "Periodic Teztnets": "Testnets that restart regularly and track the development of the master branch of [Octez repo](https://gitlab.com/tezos/tezos/).\n \n☠️ You probably don't want this unless you are a core protocol developer.",
+    "Long-running Testnets": "If you are not sure, pick this one.",
+    "Protocol Testnets": "Testnets deployed specifically to test new Mavryk protocol proposals.",
+    "Periodic Testnets": "Testnets that restart regularly and track the development of the master branch of [Mavkit repo](https://gitlab.com/mavryk-network/mavryk-protocol/).\n \n☠️ You probably don't want this unless you are a core protocol developer.",
 }
 
 nested_teztnets = {
-    "Long-running Teztnets": {},
-    "Protocol Teztnets": {},
-    "Periodic Teztnets": {},
+    "Long-running Testnets": {},
+    "Protocol Testnets": {},
+    "Periodic Testnets": {},
 }
 
 for k, v in teztnets.items():
@@ -56,21 +56,21 @@ for k, v in teztnets.items():
         continue
 
     v["release"] = None
-    if "tezos/tezos:v" in v["docker_build"]:
-        v["release"] = v["docker_build"].split("tezos/tezos:")[1]
+    if "mavrykdynamics/mavryk-protocol:v" in v["docker_build"]:
+        v["release"] = v["docker_build"].split("mavrykdynamics/mavryk-protocol:")[1]
     v["docker_build_hyperlinked"] = v["docker_build"]
 
-    if v["docker_build"].startswith("tezos/tezos"):
+    if v["docker_build"].startswith("mavrykdynamics/mavryk-protocol"):
         # build from docker hub, providing a link
         v["docker_build_hyperlinked"] = (
             "["
             + v["docker_build"]
-            + "](https://hub.docker.com/r/tezos/tezos/tags?page=1&ordering=last_updated&name="
-            + v["docker_build"].replace("tezos/tezos:", "")
+            + "](https://hub.docker.com/r/mavrykdynamics/mavryk-protocol/tags?page=1&ordering=last_updated&name="
+            + v["docker_build"].replace("mavrykdynamics/mavryk-protocol:", "")
             + ")"
         )
 
-    v["git_repo"] = "git@gitlab.com:tezos/tezos.git"
+    v["git_repo"] = "git@gitlab.com:mavryk-network/mavryk-protocol.git"
 
     readme = ""
 

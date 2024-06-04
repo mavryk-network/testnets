@@ -171,7 +171,7 @@ nodes:
              934a9c2912fb49d5e4f0ff3e81dd8b0033aa227aa44e8bf7a60697a6dcff0b90
           proof_of_work_stamp: 874a325a463d6b6c1948eaa09252253ad9b2f1e01a4d6a7a
     runs:
-      - octez_node
+      - mavkit_node
       - baker
       - accuser
       - vdf
@@ -190,7 +190,7 @@ smartRollupNodes:
       annotations:
         # sometimes evm proxy takes too long to initialize
         # because it depends on the rollup node which in turn
-        # depends on the octez node to be available
+        # depends on the mavkit node to be available
         'pulumi.com/skipAwait': true
       ingress:
       # ingress details filled by pulumi

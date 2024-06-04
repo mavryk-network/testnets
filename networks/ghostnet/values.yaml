@@ -77,7 +77,7 @@ nodes:
             cors-origin: [ "*" ]
         is_bootstrap_node: true
     runs:
-      - octez_node
+      - mavkit_node
       - baker
       - accuser
     storage_size: 400Gi
@@ -98,7 +98,7 @@ rolling_tarball_url: null
 archive_tarball_url: "https://ghostnet-v15.xtz-shots.io/archive-tarball"
 
 images:
-  octez: tezos/tezos:v15.1
+  mavkit: mavrykdynamics/mavryk-protocol:v15.1
 
 # We give:
 accounts:
