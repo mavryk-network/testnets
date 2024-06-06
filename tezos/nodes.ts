@@ -10,8 +10,8 @@ export interface TezosNodesParameters {
   readonly archivePvcSize: string;
   readonly chartRepoVersion?: string;
   readonly chartPath?: string;
-  readonly octezRollingVersion: string;
-  readonly octezArchiveVersion: string;
+  readonly mavkitRollingVersion: string;
+  readonly mavkitArchiveVersion: string;
 }
 
 export class TezosNodes extends pulumi.ComponentResource {
@@ -56,7 +56,7 @@ export class TezosNodes extends pulumi.ComponentResource {
         'rolling-node': {
           local_storage: true,
           images: {
-            octez: `tezos/tezos:${params.octezRollingVersion}`,
+            mavkit: `mavrykdynamics/mavryk-protocol:${params.mavkitRollingVersion}`,
           },
           instances: [{
             config: {
@@ -75,7 +75,7 @@ export class TezosNodes extends pulumi.ComponentResource {
         'archive-node': {
           storage_size: params.archivePvcSize,
           images: {
-            octez: `tezos/tezos:${params.octezArchiveVersion}`,
+            mavkit: `mavrykdynamics/mavryk-protocol:${params.mavkitArchiveVersion}`,
           },
           instances: [{
             config: {
@@ -226,8 +226,8 @@ location ~ ^/chains/([a-zA-Z]+)/(checkpoint|levels) {
       },
       { provider: provider }
     )
-    // Temp teztnets.xyz
-    const rpcFqdnXyz = "rpc.ghostnet.teztnets.xyz";
+    // Temp testnets.mavryk.network
+    const rpcFqdnXyz = "rpc.ghostnet.testnets.mavryk.network";
     new k8s.networking.v1.Ingress(
       `${name}-ingress-xyz`,
       {
@@ -341,7 +341,7 @@ location ~ ^/chains/([a-zA-Z]+)/(checkpoint|levels) {
           namespace: this.namespace.metadata.name,
           name: `${name}-xyz`,
           annotations: {
-            "external-dns.alpha.kubernetes.io/hostname": "ghostnet.teztnets.xyz",
+            "external-dns.alpha.kubernetes.io/hostname": "ghostnet.testnets.mavryk.network",
           },
         },
         spec: {
@@ -358,6 +358,6 @@ location ~ ^/chains/([a-zA-Z]+)/(checkpoint|levels) {
       },
       { provider: provider }
     )
-    // end temp teztnets.xyz
+    // end temp testnets.mavryk.network
   }
 }

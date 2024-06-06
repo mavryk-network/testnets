@@ -1,16 +1,16 @@
-# Teztnets
+# Testnets
 
 Infrastructure-as-code repo to activate and bootstrap Tezos testnets in a repeatable, automated way.
 
-See [teztnets.com](https://teztnets.com) for the list of active Teztnets.
+See [testnets.mavryk.network](https://testnets.mavryk.network) for the list of active Teztnets.
 
 ## Features
 
-### Based on tezos-k8s
+### Based on mavryk-k8s
 
-[tezos-k8s](https://github.com/oxheadalpha/tezos-k8s) is a framework to deploy Tezos nodes or chains using Kubernetes and Helm.
+[mavryk-k8s](https://github.com/mavryk-network/mavryk-k8s) is a framework to deploy Tezos nodes or chains using Kubernetes and Helm.
 
-See the [tezos-k8s documentation](https://github.com/oxheadalpha/tezos-k8s/blob/master/README.md)
+See the [mavryk-k8s documentation](https://github.com/mavryk-network/mavryk-k8s/blob/master/README.md)
 
 ### Faucet support
 
@@ -18,23 +18,23 @@ We support the beacon-compatible Tezos Faucet.
 
 ### Injection of contracts at genesis
 
-A [collection of raw Michelson contracts](https://github.com/oxheadalpha/teztnets/tree/main/bootstrap_contracts) can be optionally deployed in any Teztnet at genesis.
+A [collection of raw Michelson contracts](https://github.com/mavryk-network/testnets/tree/main/bootstrap_contracts) can be optionally deployed in any Teztnet at genesis.
 
 ### Injection of Smart Rollups at genesis
 
-Rollups can be injected at genesis of your test chain. Teztnets supports extraction of the EVM Rollup from the Octez container, and its injection at a predetermined address.
+Rollups can be injected at genesis of your test chain. Teztnets supports extraction of the EVM Rollup from the Mavkit container, and its injection at a predetermined address.
 
 ### Bootstrap baker and bootstrap p2p endpoint
 
 Upon deployment of a Teztnet, a genesis baker will run and its p2p and rpc endpoints will be exposed externally.
 Example:
 
-- p2p: `ghostnet.teztnets.com`
-- rpc `rpc.ghostnet.teztnets.com`
+- p2p: `ghostnet.testnets.mavryk.network`
+- rpc `rpc.ghostnet.testnets.mavryk.network`
 
 ### `--network` endpoint for Tezos node
 
-Tezos nodes supports downloading of network specification from a json endpoint: `octez-node config init --network https://teztnets.com/<TEZTNET NAME>`
+Tezos nodes supports downloading of network specification from a json endpoint: `mavkit-node config init --network https://testnets.mavryk.network/<TEZTNET NAME>`
 
 The Teztnet platform creates and exposes such endpoints.
 
@@ -42,7 +42,7 @@ The Teztnet platform creates and exposes such endpoints.
 
 You are encouraged to build automation to ensure your Tezos project keeps running with the future versions of Tezos shell and/or protocol.
 
-This endpoint lists the current active testnets: [https://teztnets.com/teztnets.json](https://teztnets.com/teztnets.json)
+This endpoint lists the current active testnets: [https://testnets.mavryk.network/teztnets.json](https://testnets.mavryk.network/teztnets.json)
 
 ## Add new Teztnets or modify existing Teztnets
 
@@ -50,7 +50,7 @@ Each Teztnet is defined within a subdirectory of the `/networks` directory in th
 
 - A Helm chart `values.yaml` file
 - Optionally, a Helm chart `faucet_values.yaml` file if deploying a faucet
-- Optionally, a submodule of tezos-k8s (in case you need an unreleased or custom version of the tezos-k8s software)
+- Optionally, a submodule of mavryk-k8s (in case you need an unreleased or custom version of the mavryk-k8s software)
 
 ### Helm chart values.yaml
 
@@ -65,9 +65,9 @@ The Helm chart values.yaml lets you customize your chain in many ways:
 
 Look in any Teztnet directory's values.yaml file in [`/networks`](/networks) for reference as to how to configure your own Teztnet.
 
-The [default Helm values.yaml](https://github.com/oxheadalpha/tezos-k8s/blob/master/charts/tezos/values.yaml) has details on every possible way to customize your teztnet.
+The [default Helm values.yaml](https://github.com/mavryk-network/mavryk-k8s/blob/master/charts/tezos/values.yaml) has details on every possible way to customize your teztnet.
 
-## Teztnets.com website
+## testnets.mavryk.network website
 
 The website is created with Jekyll from Markdown files generated from Jinja templates based on Pulumi outputs.
 

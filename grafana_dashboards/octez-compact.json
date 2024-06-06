@@ -71,7 +71,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_validator_chain_is_bootstrapped{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_is_bootstrapped{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -148,7 +148,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_validator_chain_synchronisation_status{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_synchronisation_status{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -221,7 +221,7 @@
          "tableColumn": "",
          "targets": [
             {
-               "expr": "octez_version{pod=\"$node_instance\"}",
+               "expr": "mavkit_version{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -303,7 +303,7 @@
          "tableColumn": "",
          "targets": [
             {
-               "expr": "octez_version{pod=\"$node_instance\"}",
+               "expr": "mavkit_version{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -385,7 +385,7 @@
          "tableColumn": "",
          "targets": [
             {
-               "expr": "(label_replace(octez_version{pod=\"$node_instance\"},\"commit_hash_short\" ,\"$1\",\"commit_hash\",\"^(.{8}).*$\"))",
+               "expr": "(label_replace(mavkit_version{pod=\"$node_instance\"},\"commit_hash_short\" ,\"$1\",\"commit_hash\",\"^(.{8}).*$\"))",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -550,7 +550,7 @@
          "tableColumn": "",
          "targets": [
             {
-               "expr": "octez_validator_chain_head_level{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_head_level{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -591,7 +591,7 @@
          ],
          "targets": [
             {
-               "expr": "octez_validator_chain_head_cycle{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_head_cycle{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -599,7 +599,7 @@
                "refId": "A"
             },
             {
-               "expr": "octez_store_caboose_level{pod=\"$node_instance\"}",
+               "expr": "mavkit_store_caboose_level{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -607,7 +607,7 @@
                "refId": "B"
             },
             {
-               "expr": "octez_store_checkpoint_level{pod=\"$node_instance\"}",
+               "expr": "mavkit_store_checkpoint_level{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -615,7 +615,7 @@
                "refId": "C"
             },
             {
-               "expr": "octez_store_savepoint_level{pod=\"$node_instance\"}",
+               "expr": "mavkit_store_savepoint_level{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -649,7 +649,7 @@
          ],
          "targets": [
             {
-               "expr": "octez_p2p_connections_incoming{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_connections_incoming{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -657,7 +657,7 @@
                "refId": "A"
             },
             {
-               "expr": "octez_p2p_points_trusted{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_points_trusted{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -665,7 +665,7 @@
                "refId": "B"
             },
             {
-               "expr": "octez_p2p_connections_private{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_connections_private{pod=\"$node_instance\"}",
                "format": "time_series",
                "instant": true,
                "intervalFactor": 2,
@@ -724,14 +724,14 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_p2p_connections_outgoing{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_connections_outgoing{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Outgoing connections",
                "refId": "A"
             },
             {
-               "expr": "octez_p2p_connections_incoming{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_connections_incoming{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Incoming connections",
@@ -817,28 +817,28 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_validator_block_operations_per_pass{pass_id=\"0\",pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_block_operations_per_pass{pass_id=\"0\",pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Consensus",
                "refId": "A"
             },
             {
-               "expr": "octez_validator_block_operations_per_pass{pass_id=\"1\",pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_block_operations_per_pass{pass_id=\"1\",pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Vote",
                "refId": "B"
             },
             {
-               "expr": "octez_validator_block_operations_per_pass{pass_id=\"2\",pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_block_operations_per_pass{pass_id=\"2\",pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Anonymous",
                "refId": "C"
             },
             {
-               "expr": "octez_validator_block_operations_per_pass{pass_id=\"3\",pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_block_operations_per_pass{pass_id=\"3\",pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Manager",
@@ -927,7 +927,7 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_validator_chain_head_level{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_head_level{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Head level",
@@ -1014,7 +1014,7 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_validator_block_last_finished_request_completion_timestamp{pod=\"$node_instance\"} - octez_validator_block_last_finished_request_treatment_timestamp{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_block_last_finished_request_completion_timestamp{pod=\"$node_instance\"} - mavkit_validator_block_last_finished_request_treatment_timestamp{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Validation time",
@@ -1101,7 +1101,7 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_validator_chain_head_consumed_gas{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_head_consumed_gas{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Gas consumed",
@@ -1188,7 +1188,7 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_validator_chain_head_round{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_head_round{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Round",
@@ -1275,7 +1275,7 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_store_last_written_block_size{pod=\"$node_instance\"}",
+               "expr": "mavkit_store_last_written_block_size{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Written block size",
@@ -1362,7 +1362,7 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_store_alternate_heads_count{pod=\"$node_instance\"}",
+               "expr": "mavkit_store_alternate_heads_count{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Alternate heads count",
@@ -1452,7 +1452,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_store_invalid_blocks{pod=\"$node_instance\"}",
+               "expr": "mavkit_store_invalid_blocks{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
@@ -1501,7 +1501,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_validator_chain_branch_switch_count{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_branch_switch_count{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
@@ -1550,7 +1550,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_store_last_merge_time{pod=\"$node_instance\"}",
+               "expr": "mavkit_store_last_merge_time{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Merge time",
@@ -1599,7 +1599,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_validator_chain_head_round{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_head_round{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
@@ -1657,7 +1657,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_validator_block_last_finished_request_completion_timestamp{pod=\"$node_instance\"} - octez_validator_block_last_finished_request_treatment_timestamp{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_block_last_finished_request_completion_timestamp{pod=\"$node_instance\"} - mavkit_validator_block_last_finished_request_treatment_timestamp{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "blocks validation mean",
@@ -1715,7 +1715,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_validator_chain_last_finished_request_completion_timestamp{pod=\"$node_instance\"} - octez_validator_chain_last_finished_request_treatment_timestamp{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_chain_last_finished_request_completion_timestamp{pod=\"$node_instance\"} - mavkit_validator_chain_last_finished_request_treatment_timestamp{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
@@ -1773,35 +1773,35 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_validator_peer_system_error{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_peer_system_error{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
                "refId": "A"
             },
             {
-               "expr": "octez_validator_peer_too_short_locator{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_peer_too_short_locator{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
                "refId": "B"
             },
             {
-               "expr": "octez_validator_peer_unavailable_protocol{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_peer_unavailable_protocol{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
                "refId": "C"
             },
             {
-               "expr": "octez_validator_peer_unknown_ancestor{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_peer_unknown_ancestor{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
                "refId": "D"
             },
             {
-               "expr": "octez_validator_peer_unknown_error{pod=\"$node_instance\"}",
+               "expr": "mavkit_validator_peer_unknown_error{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
@@ -1862,7 +1862,7 @@
          "pluginVersion": "7",
          "targets": [
             {
-               "expr": "octez_p2p_connections_incoming{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_connections_incoming{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "",
@@ -1880,7 +1880,7 @@
    "style": "dark",
    "tags": [
       "tezos",
-      "octez"
+      "mavkit"
    ],
    "templating": {
       "list": [
@@ -1894,7 +1894,7 @@
             "multi": false,
             "name": "node_instance",
             "options": [ ],
-            "query": "label_values(octez_version,pod)",
+            "query": "label_values(mavkit_version,pod)",
             "refresh": 1,
             "regex": "",
             "sort": 0,
@@ -1956,6 +1956,6 @@
       ]
    },
    "timezone": "browser",
-   "title": "Octez compact dashboard",
+   "title": "Mavkit compact dashboard",
    "version": 0
 }

@@ -54,7 +54,7 @@ new gcp.storage.BucketIAMMember("publicRead", {
 
 
 // Define your domain name and a suitable name for the managed zone
-const domainName = "teztnets.xyz";
+const domainName = "testnets.mavryk.network";
 const managedZoneName = "teztnets-zone";
 
 // Create a managed DNS zone
@@ -66,7 +66,7 @@ const dnsZone = new gcp.dns.ManagedZone(managedZoneName, {
 
 
 // Define another domain name and a suitable name for the managed zone
-const domainNameCom = "teztnets.com";
+const domainNameCom = "testnets.mavryk.network";
 const managedZoneNameCom = "teztnetscom-zone";
 
 // Create a managed DNS zone
@@ -113,7 +113,7 @@ const dailynet_chain = new TezosChain(
     category: periodicCategory,
     humanName: "Dailynet",
     description:
-      "A testnet that restarts every day launched from tezos/tezos master branch and protocol alpha.",
+      "A testnet that restarts every day launched from mavrykdynamics/mavryk-protocol master branch and protocol alpha.",
     schedule: "0 0 * * *",
     activationBucket: activationBucket,
     bootstrapContracts: [
@@ -147,7 +147,7 @@ const weeklynet_chain = new TezosChain(
     category: periodicCategory,
     humanName: "Weeklynet",
     description:
-      "A testnet that restarts every Wednesday launched from tezos/tezos master branch. It runs Oxford for 4 cycles then upgrades to proto Alpha.",
+      "A testnet that restarts every Wednesday launched from mavrykdynamics/mavryk-protocol master branch. It runs Oxford for 4 cycles then upgrades to proto Alpha.",
     schedule: "0 0 * * WED",
     activationBucket: activationBucket,
     bootstrapContracts: [
@@ -189,8 +189,8 @@ const ghostnet_chain = new TezosNodes(
     chainName: "ghostnet",
     rpcFqdn: `rpc.ghostnet.${domainNameCom}`,
     p2pFqdn: `ghostnet.${domainNameCom}`,
-    octezRollingVersion: ghostnetRollingVersion,
-    octezArchiveVersion: ghostnetArchiveVersion,
+    mavkitRollingVersion: ghostnetRollingVersion,
+    mavkitArchiveVersion: ghostnetArchiveVersion,
     chartRepoVersion: "6.25.0",
     rollingPvcSize: "50Gi",
     archivePvcSize: "750Gi"
@@ -411,7 +411,7 @@ const ghostnetTeztnet = {
   category: "Long-running Teztnets",
   chain_name: "TEZOS_ITHACANET_2022-01-25T15:00:00Z",
   description: "Ghostnet is the long-running testnet for Tezos.",
-  docker_build: `tezos/tezos:${ghostnetRollingVersion}`,
+  docker_build: `mavrykdynamics/mavryk-protocol:${ghostnetRollingVersion}`,
   faucet_url: `https://faucet.ghostnet.${domainNameCom}`,
   git_ref: ghostnetRollingVersion,
   human_name: "Ghostnet",
@@ -443,7 +443,7 @@ const mainnetMetadata = {
   category: "Long-running Teztnets",
   chain_name: "TEZOS_MAINNET",
   description: "Tezos Mainnet",
-  docker_build: `tezos/tezos:${ghostnetRollingVersion}`,
+  docker_build: `mavrykdynamics/mavryk-protocol:${ghostnetRollingVersion}`,
   git_ref: ghostnetRollingVersion,
   human_name: "Mainnet",
   indexers: [
@@ -506,7 +506,7 @@ function createDomainRedirectIngress(srcDomain: string, destDomain: string): k8s
   }, { provider });
 }
 
-createDomainRedirectIngress("faucet.ghostnet.teztnets.xyz", "faucet.ghostnet.teztnets.com");
-createDomainRedirectIngress("faucet.oxfordnet.teztnets.xyz", "faucet.oxfordnet.teztnets.com");
-createDomainRedirectIngress("faucet.nairobinet.teztnets.xyz", "faucet.nairobinet.teztnets.com");
-createDomainRedirectIngress("status.teztnets.xyz", "status.teztnets.com");
+createDomainRedirectIngress("faucet.ghostnet.testnets.mavryk.network", "faucet.ghostnet.testnets.mavryk.network");
+createDomainRedirectIngress("faucet.oxfordnet.testnets.mavryk.network", "faucet.oxfordnet.testnets.mavryk.network");
+createDomainRedirectIngress("faucet.nairobinet.testnets.mavryk.network", "faucet.nairobinet.testnets.mavryk.network");
+createDomainRedirectIngress("status.testnets.mavryk.network", "status.testnets.mavryk.network");

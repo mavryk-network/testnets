@@ -14,11 +14,11 @@ config:
   network:
     name: custom # Beacon SDK doesn't recognize weeklynet atm.
     rpcUrl: "" # filled in by pulumi
-    faucetAddress: tz1a4GT7THHaGDiTxgXoatDWcZfJ5j29z5RC
+    faucetAddress: mv1NRjkhmeavqVVh716ephuXmaXGe7Y6UyzQ
 
 # Value the server sets for the "Access-Control-Allow-Origin" header for CORS.
 authorizedHost: "" # filled in by pulumi
-# RPC url for the faucet backend. Default value assumes tezos-k8s created an RPC
+# RPC url for the faucet backend. Default value assumes mavryk-k8s created an RPC
 # service in the same namespace. If not set, defaults to `config.network.rpcUrl`.
 backendRpcUrl: http://tezos-node-rpc:8732
 # If the backend requires CAPTCHA tokens to be submitted.
