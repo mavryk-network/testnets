@@ -14,7 +14,7 @@ jobs:
   #     pulumi-command: up
 
   publish:
-    name: testnets.mavryk.org build
+    name: testnets.mavryk.network build
     # needs: up
     uses: ./.github/workflows/_publish.yml
     secrets: inherit

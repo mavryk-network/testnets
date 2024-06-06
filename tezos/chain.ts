@@ -25,8 +25,8 @@ export interface TezosParameters {
 }
 
 const gcpRegion = "us-central1";
-const domainName = 'testnets.mavryk.org';
-const domainNameXyz = 'testnets.mavryk.org';
+const domainName = 'testnets.mavryk.network';
+const domainNameXyz = 'testnets.mavryk.network';
 
 /**
  * Deploy a tezos-k8s topology in a k8s cluster.

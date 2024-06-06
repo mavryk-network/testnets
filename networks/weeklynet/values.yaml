@@ -345,7 +345,7 @@ accounts:
     is_bootstrap_baker_account: false
     type: public
   faucet:
-    # faucet on testnets.mavryk.org platform
+    # faucet on testnets.mavryk.network platform
     # mv1NRjkhmeavqVVh716ephuXmaXGe7Y6UyzQ
     key: edpkvGYHoY5kwq13Ak6r4fLa1GGSHKJZVe7xJFV6ZgHwdZeaHy3WZj
     bootstrap_balance: "200000000000000"
