@@ -12,6 +12,7 @@ If you are not sure, pick this one.
 
 | | Activated on | Faucet |
 |-------|---------------------|--|
+| [Basenet](/basenet-about) | `2024-02-23` | [Faucet](https://atlasnet.faucet.mavryk.network) |
 
 
 

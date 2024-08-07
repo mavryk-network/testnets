@@ -1,0 +1,15 @@
+{
+  "chain_name": "MAVRYK_ATLASNET_2024-02-23T10:39:51Z",
+  "genesis": {
+    "block": "BLockGenesisGenesisGenesisGenesisGenesis7ddfecenZrc",
+    "protocol": "Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P",
+    "timestamp": "2024-02-23T10:39:51Z"
+  },
+  "sandboxed_chain_name": "SANDBOXED_mavryk",
+  "default_bootstrap_peers": [],
+  "genesis_parameters": {
+    "values": {
+      "genesis_pubkey": "edpkuAzuZTVS6YsT78GApB2mRfQ54ExzPjUbommup4VEBq5VdHSf8F"
+    }
+  }
+}

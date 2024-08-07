@@ -1,26 +1,21 @@
 ---
 layout: page
-title: Atlasnet
-permalink: /atlasnet-about
+title: Basenet
+permalink: /basenet-about
 ---
 
-Test Chain for the Atlas Protocol Proposal.
+Basenet is the long-running testnet for Mavryk.
 
 | | |
 |-------|---------------------|
 | Public RPC endpoints | [https://atlasnet.rpc.mavryk.network](https://atlasnet.rpc.mavryk.network/chains/main/chain_id)<br/> |
-| Faucet | [Atlasnet faucet](https://atlasnet.faucet.mavryk.network) |
+| Faucet | [Basenet faucet](https://atlasnet.faucet.mavryk.network) |
 | Full network name | `MAVRYK_ATLASNET_2024-02-23T10:39:51Z` |
 | Mavryk docker build | mavrykdynamics/mavryk:v19.3 |
 | Activated on | 2024-02-23T10:39:51Z |
 | Block Explorers | [MvKT](https://atlasnet.api.mavryk.network) |
 
 
-Oxfordnet has 8 second blocks (twice faster than mainnet).
-
-Oxfordnet started on Nairobi protocol then upgraded to Oxford at the end of cycle 1 (the second cycle).
-
-Adaptive Issuance is disabled on Oxfordnet. To test Adaptive Issuance, please use Weeklynet or Dailynet.
 
 
 ### Install the software
@@ -31,7 +26,7 @@ Adaptive Issuance is disabled on Oxfordnet. To test Adaptive Issuance, please us
 
 #### Alternative: Use docker
 
-To join Atlasnet with docker, open a shell in the container:
+To join Basenet with docker, open a shell in the container:
 
 ```
 docker run -it --entrypoint=/bin/sh mavrykdynamics/mavryk:v19.3
@@ -53,12 +48,12 @@ make
 export PATH=$HOME/mavryk-protocol:$PATH
 ```
 
-### Join the Atlasnet network
+### Join the Basenet network
 
 Run the following commands:
 
 ```
-mavkit-node config init --network https://testnets.mavryk.network/atlasnet
+mavkit-node config init --network https://testnets.mavryk.network/basenet
 
 mavkit-node run --rpc-addr 127.0.0.1:8732
 ```
@@ -68,7 +63,7 @@ mavkit-node run --rpc-addr 127.0.0.1:8732
 
 
 
-### Bake on the Atlasnet network
+### Bake on the Basenet network
 
 To improve reliability of the chain, you can take part in the consensus by becoming a baker. In that case, you will need some test tokens from the [faucet](https://atlasnet.faucet.mavryk.network).
 
