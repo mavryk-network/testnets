@@ -308,7 +308,7 @@ export class TezosChain extends pulumi.ComponentResource {
           p2pFqdn: `dal.${name}.${domainName}`,
         },
         "dal-dal1": {
-          humanName: 'DAL Teztnets Attester',
+          humanName: 'DAL Testnets Attester',
           rpcFqdn: `dal-attester-rpc.${name}.${domainName}`,
           p2pFqdn: `dal1.${name}.${domainName}`,
 

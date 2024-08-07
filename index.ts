@@ -34,9 +34,9 @@ const provider = new k8s.Provider("do-k8s-provider", {
   kubeconfig,
 })
 
-const periodicCategory = "Periodic Teztnets"
-const protocolCategory = "Protocol Teztnets"
-const longCategory = "Long-running Teztnets"
+const periodicCategory = "Periodic Testnets"
+const protocolCategory = "Protocol Testnets"
+const longCategory = "Long-running Testnets"
 
 // Create a GCP resource (Storage Bucket) for Bootstrap Smart Contracts
 const activationBucket = new gcp.storage.Bucket("testnets-global-activation-bucket", {
@@ -324,7 +324,7 @@ function getNetworks(chains: TezosChain[]): object {
   return networks
 }
 
-function getTeztnets(chains: TezosChain[]): object {
+function getTestnets(chains: TezosChain[]): object {
   const teztnets: { [name: string]: { [name: string]: Object } } = {}
 
   chains.forEach(function(chain) {
@@ -408,7 +408,7 @@ export const networks = {
 // We hardcode the values to be displayed on the webpage.
 const lastBakingDaemonMainnetGhostnet = "PtNairob"
 const ghostnetTeztnet = {
-  category: "Long-running Teztnets",
+  category: "Long-running Testnets",
   chain_name: "TEZOS_ITHACANET_2022-01-25T15:00:00Z",
   description: "Ghostnet is the long-running testnet for Tezos.",
   docker_build: `mavrykdynamics/mavryk-protocol:${ghostnetRollingVersion}`,
@@ -440,7 +440,7 @@ const ghostnetTeztnet = {
 // Some systems rely on this to provide lists of third-party RPC services
 // to their users. For example, umami wallet.
 const mainnetMetadata = {
-  category: "Long-running Teztnets",
+  category: "Long-running Testnets",
   chain_name: "TEZOS_MAINNET",
   description: "Tezos Mainnet",
   docker_build: `mavrykdynamics/mavryk-protocol:${ghostnetRollingVersion}`,
@@ -467,7 +467,7 @@ const mainnetMetadata = {
 }
 
 export const teztnets = {
-  ...getTeztnets([dailynet_chain, weeklynet_chain, nairobinet_chain, oxfordnet_chain]),
+  ...getTestnets([dailynet_chain, weeklynet_chain, nairobinet_chain, oxfordnet_chain]),
   ...{ ghostnet: ghostnetTeztnet, mainnet: mainnetMetadata },
 }
 

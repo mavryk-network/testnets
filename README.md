@@ -2,7 +2,7 @@
 
 Infrastructure-as-code repo to activate and bootstrap Tezos testnets in a repeatable, automated way.
 
-See [testnets.mavryk.network](https://testnets.mavryk.network) for the list of active Teztnets.
+See [testnets.mavryk.network](https://testnets.mavryk.network) for the list of active Testnets.
 
 ## Features
 
@@ -22,7 +22,7 @@ A [collection of raw Michelson contracts](https://github.com/mavryk-network/test
 
 ### Injection of Smart Rollups at genesis
 
-Rollups can be injected at genesis of your test chain. Teztnets supports extraction of the EVM Rollup from the Mavkit container, and its injection at a predetermined address.
+Rollups can be injected at genesis of your test chain. Testnets supports extraction of the EVM Rollup from the Mavkit container, and its injection at a predetermined address.
 
 ### Bootstrap baker and bootstrap p2p endpoint
 
@@ -38,13 +38,13 @@ Tezos nodes supports downloading of network specification from a json endpoint: 
 
 The Teztnet platform creates and exposes such endpoints.
 
-## Automate on Teztnets
+## Automate on Testnets
 
 You are encouraged to build automation to ensure your Tezos project keeps running with the future versions of Tezos shell and/or protocol.
 
 This endpoint lists the current active testnets: [https://testnets.mavryk.network/teztnets.json](https://testnets.mavryk.network/teztnets.json)
 
-## Add new Teztnets or modify existing Teztnets
+## Add new Testnets or modify existing Testnets
 
 Each Teztnet is defined within a subdirectory of the `/networks` directory in this repository. The Teztnet directory must contain the following files:
 
