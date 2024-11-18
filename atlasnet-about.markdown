@@ -16,11 +16,11 @@ Test Chain for the Atlas Protocol Proposal.
 | Block Explorers | [MvKT](https://atlasnet.api.mavryk.network) |
 
 
-Oxfordnet has 8 second blocks (twice faster than mainnet).
+Atlasnet has 8 second blocks (twice faster than mainnet).
 
-Oxfordnet started on Nairobi protocol then upgraded to Oxford at the end of cycle 1 (the second cycle).
+Atlasnet is the first protocol running on Mavryk.
 
-Adaptive Issuance is disabled on Oxfordnet. To test Adaptive Issuance, please use Weeklynet or Dailynet.
+Adaptive Issuance is disabled on Atlasnet.
 
 
 ### Install the software

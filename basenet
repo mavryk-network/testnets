@@ -6,7 +6,9 @@
     "timestamp": "2024-02-23T10:39:51Z"
   },
   "sandboxed_chain_name": "SANDBOXED_mavryk",
-  "default_bootstrap_peers": [],
+  "default_bootstrap_peers": [
+    "atlasnet.rpc.mavryk.network"
+  ],
   "genesis_parameters": {
     "values": {
       "genesis_pubkey": "edpkuAzuZTVS6YsT78GApB2mRfQ54ExzPjUbommup4VEBq5VdHSf8F"
