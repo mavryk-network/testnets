@@ -9,8 +9,8 @@
     "human_name": "Atlasnet",
     "indexers": [
       {
-        "name": "MvKT",
-        "url": "https://atlasnet.api.mavryk.network"
+        "name": "Nexus",
+        "url": "https://nexus.mavryk.org"
       }
     ],
     "last_baking_daemon": "PtAtLas",
@@ -32,8 +32,8 @@
     "human_name": "Basenet",
     "indexers": [
       {
-        "name": "MvKT",
-        "url": "https://atlasnet.api.mavryk.network"
+        "name": "Nexus",
+        "url": "https://nexus.mavryk.org"
       }
     ],
     "last_baking_daemon": "PtAtLas",

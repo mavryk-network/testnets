@@ -13,7 +13,7 @@ Basenet is the long-running testnet for Mavryk.
 | Full network name | `MAVRYK_ATLASNET_2024-02-23T10:39:51Z` |
 | Mavryk docker build | mavrykdynamics/mavryk:v19.3 |
 | Activated on | 2024-02-23T10:39:51Z |
-| Block Explorers | [MvKT](https://atlasnet.api.mavryk.network) |
+| Block Explorers | [Nexus](https://nexus.mavryk.org) |
 
 
 

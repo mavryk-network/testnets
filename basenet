@@ -7,7 +7,7 @@
   },
   "sandboxed_chain_name": "SANDBOXED_mavryk",
   "default_bootstrap_peers": [
-    "atlasnet.rpc.mavryk.network"
+    "atlasnet.rpc.mavryk.network:9732"
   ],
   "genesis_parameters": {
     "values": {
