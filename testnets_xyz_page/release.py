@@ -4,11 +4,11 @@ import os
 import shutil
 import jinja2
 
-shutil.copytree("teztnets_xyz_page/website", "target/release", dirs_exist_ok=True)
+shutil.copytree("testnets_xyz_page/website", "target/release", dirs_exist_ok=True)
 
-teztnets = {}
-with open("./teztnets.json", "r") as teztnets_file:
-    teztnets = json.load(teztnets_file)
+testnets = {}
+with open("./testnets.json", "r") as testnets_file:
+    testnets = json.load(testnets_file)
 
 networks = {}
 with open("./networks.json", "r") as networks_file:
@@ -26,32 +26,32 @@ category_desc = {
     "Periodic Testnets": "Testnets that restart regularly and track the development of the master branch of [Mavkit repo](https://gitlab.com/mavryk-network/mavryk-protocol/).\n \n☠️ You probably don't want this unless you are a core protocol developer.",
 }
 
-nested_teztnets = {
+nested_testnets = {
     "Long-running Testnets": {},
     "Protocol Testnets": {},
     "Periodic Testnets": {},
 }
 
-for k, v in teztnets.items():
+for k, v in testnets.items():
     if v["masked_from_main_page"]:
         continue
-    if v["category"] not in nested_teztnets:
-        nested_teztnets[v["category"]] = {}
-    nested_teztnets[v["category"]][k] = v
-    nested_teztnets[v["category"]][k]["activated_on"] = networks[k]["genesis"][
+    if v["category"] not in nested_testnets:
+        nested_testnets[v["category"]] = {}
+    nested_testnets[v["category"]][k] = v
+    nested_testnets[v["category"]][k]["activated_on"] = networks[k]["genesis"][
         "timestamp"
     ].split("T")[0]
 
-index = jinja2.Template(open("teztnets_xyz_page/index.md.jinja2").read()).render(
-    teztnets=nested_teztnets, category_desc=category_desc
+index = jinja2.Template(open("testnets_xyz_page/index.md.jinja2").read()).render(
+    testnets=nested_testnets, category_desc=category_desc
 )
 
 with open("target/release/index.markdown", "a") as out_file:
     print(index, file=out_file)
-with open("target/release/teztnets.json", "w") as out_file:
-    print(json.dumps(teztnets, indent=2), file=out_file)
+with open("target/release/testnets.json", "w") as out_file:
+    print(json.dumps(testnets, indent=2), file=out_file)
 
-for k, v in teztnets.items():
+for k, v in testnets.items():
     if k == "mainnet":
         continue
 
@@ -79,11 +79,11 @@ for k, v in teztnets.items():
         with open(readme_path) as readme_file:
             readme = readme_file.read()
 
-    teztnet_md = jinja2.Template(open("teztnets_xyz_page/teztnet_page.md.jinja2").read()).render(
+    testnet_md = jinja2.Template(open("testnets_xyz_page/testnet_page.md.jinja2").read()).render(
         k=k, v=v, network_params=networks[k], readme=readme
     )
 
     with open(
         f"target/release/{v['human_name'].lower()}-about.markdown", "w"
     ) as out_file:
-        print(teztnet_md, file=out_file)
+        print(testnet_md, file=out_file)

@@ -3,7 +3,7 @@
 /**
  * Function to get chart parameters to pass to pulumi helm.
  * This allows to either use a local submodule chart or a released one.
- * Warning: When using a local one, if you require custom tezos-k8s images, make sure
+ * Warning: When using a local one, if you require custom mavryk-k8s images, make sure
  * to specify them in your params.
  * 
  * 
@@ -21,14 +21,14 @@ export function getChartParams(params: any, chartName: string): object {
     chartParams = { path: `${params.chartPath}/charts/${chartName}` };
   } else {
     let _chartName = chartName;
-    if (chartName == "tezos") {
-      // special case: the tezos chart is published as "tezos-chain"
-      _chartName = "tezos-chain";
+    if (chartName == "mavryk") {
+      // special case: the mavryk chart is published as "mavryk-chain"
+      _chartName = "mavryk-chain";
 
     }
     chartParams = {
       fetchOpts: {
-        repo: "https://oxheadalpha.github.io/tezos-helm-charts"
+        repo: "https://mavryk-network.github.io/mavryk-helm-charts"
       },
       chart: _chartName,
       version: params.chartRepoVersion

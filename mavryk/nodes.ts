@@ -2,7 +2,7 @@ import * as k8s from "@pulumi/kubernetes"
 import * as pulumi from "@pulumi/pulumi"
 import { getChartParams } from './chartResolver'
 
-export interface TezosNodesParameters {
+export interface MavrykNodesParameters {
   readonly chainName: string;
   readonly rpcFqdn: string;
   readonly p2pFqdn: string;
@@ -14,12 +14,12 @@ export interface TezosNodesParameters {
   readonly mavkitArchiveVersion: string;
 }
 
-export class TezosNodes extends pulumi.ComponentResource {
+export class MavrykNodes extends pulumi.ComponentResource {
   readonly namespace: k8s.core.v1.Namespace
 
   constructor(
     name: string,
-    params: TezosNodesParameters,
+    params: MavrykNodesParameters,
     provider: k8s.Provider,
     opts?: pulumi.ResourceOptions
   ) {
@@ -28,12 +28,12 @@ export class TezosNodes extends pulumi.ComponentResource {
     }
 
     /**
-     * Deploys Tezos Nodes on a K8s cluster, for RPC and boot node functionality.
+     * Deploys Mavryk Nodes on a K8s cluster, for RPC and boot node functionality.
      * @param name The name of the Pulumi resource.
      * @param params Helm chart values and chain bootstrap parameters
      * @param provider The Kubernetes cluster to deploy it into.
      */
-    super("pulumi-contrib:components:TezosChain", name, inputs, opts)
+    super("pulumi-contrib:components:MavrykChain", name, inputs, opts)
 
     this.namespace = new k8s.core.v1.Namespace(
       name,
@@ -45,7 +45,7 @@ export class TezosNodes extends pulumi.ComponentResource {
 
     )
 
-    let chartParams = getChartParams(params, 'tezos-chain')
+    let chartParams = getChartParams(params, 'mavryk-chain')
 
     let helmValues = {
       node_config_network: {
@@ -181,7 +181,7 @@ location ~ ^/chains/([a-zA-Z]+)/(checkpoint|levels) {
                   path: "/",
                   backend: {
                     service: {
-                      name: "tezos-node-rpc",
+                      name: "mavryk-node-rpc",
                       port: { number: 8732 },
                     },
                   },
@@ -313,7 +313,7 @@ location ~ ^/chains/([a-zA-Z]+)/(checkpoint|levels) {
                   path: "/",
                   backend: {
                     service: {
-                      name: "tezos-node-rpc",
+                      name: "mavryk-node-rpc",
                       port: { number: 8732 },
                     },
                   },

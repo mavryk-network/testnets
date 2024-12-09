@@ -88,7 +88,7 @@ export class MavrykChain extends pulumi.ComponentResource {
     if (this.name == "nairobinet") {
       this.mavrykHelmValues["accounts"]["oxheadbaker"]["key"] = this.params.bakingPrivateKey
     } else {
-      this.mavrykHelmValues["accounts"]["teztnetsbaker"]["key"] = this.params.bakingPrivateKey
+      this.mavrykHelmValues["accounts"]["testnetsbaker"]["key"] = this.params.bakingPrivateKey
     }
     if (this.params.schedule) {
       const deployDate = new Date(
@@ -109,7 +109,7 @@ export class MavrykChain extends pulumi.ComponentResource {
       // Otherwise, the old broken mondaynet will mix with the new one and you'll never be able to produce
       // another genesis block.
       this.mavrykHelmValues["node_config_network"]["chain_name"] =
-        `TEZOS-${this.params.humanName.toUpperCase()}-${deployDate.toISOString()}`
+        `MAVRYK-${this.params.humanName.toUpperCase()}-${deployDate.toISOString()}`
       this.mavrykHelmValues["node_config_network"]["genesis"]["timestamp"] = deployDate.toISOString();
     }
 
@@ -415,7 +415,7 @@ export class MavrykChain extends pulumi.ComponentResource {
       {
         metadata: {
           namespace: this.namespace.metadata.name,
-          name: `${name}-teztnetscom`,
+          name: `${name}-testnetscom`,
           annotations: {
             "external-dns.alpha.kubernetes.io/hostname": `${name}.${domainNameXyz}`,
           },

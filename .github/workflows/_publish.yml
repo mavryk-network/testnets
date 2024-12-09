@@ -6,7 +6,7 @@ on:
       networks:
         required: true
         type: string
-      teztnets:
+      testnets:
         required: true
         type: string
 
@@ -28,12 +28,12 @@ jobs:
           ${{ inputs.networks }}
           EOF
       - run: |
-          cat > teztnets.json <<EOF
-          ${{ inputs.teztnets }}
+          cat > testnets.json <<EOF
+          ${{ inputs.testnets }}
           EOF
       - name: generate release artifacts
         run: |
-          python teztnets_xyz_page/release.py
+          python testnets_xyz_page/release.py
       - name: Deploy to testnets.mavryk.network
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -44,18 +44,18 @@ jobs:
       # Generate release artifacts for testnets.mavryk.network
       - name: Generate release artifacts for testnets.mavryk.network
         run: |
-          python teztnets_xyz_page/release.py
+          python testnets_xyz_page/release.py
       # Temporary - deploy to testnets.mavryk.network
       - name: Rewrite and replace domain in jekyll site
         run: |
-          sed -i 's/testnets.mavryk.network/testnets.mavryk.network/g' teztnets_xyz_page/website/CNAME
-          sed -i 's/testnets.mavryk.network/testnets.mavryk.network/g' teztnets_xyz_page/website/_config.yml
-          sed -i 's/testnets.mavryk.network/testnets.mavryk.network/g' teztnets_xyz_page/website/_includes/header.html
-          sed -i 's/testnets.mavryk.network/testnets.mavryk.network/g' teztnets_xyz_page/website/index.markdown
+          sed -i 's/testnets.mavryk.network/testnets.mavryk.network/g' testnets_xyz_page/website/CNAME
+          sed -i 's/testnets.mavryk.network/testnets.mavryk.network/g' testnets_xyz_page/website/_config.yml
+          sed -i 's/testnets.mavryk.network/testnets.mavryk.network/g' testnets_xyz_page/website/_includes/header.html
+          sed -i 's/testnets.mavryk.network/testnets.mavryk.network/g' testnets_xyz_page/website/index.markdown
       - name: Deploy to testnets.mavryk.network
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.TEZTNETS_COM_DEPLOY_KEY }}
+          deploy_key: ${{ secrets.TESTNETS_COM_DEPLOY_KEY }}
           publish_dir: ./target/release
           external_repository: mavryk-network/testnets
           enable_jekyll: true

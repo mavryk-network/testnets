@@ -17,12 +17,12 @@ export interface Parameters {
 }
 
 /**
- * Deploy a tezos-k8s topology in a k8s cluster.
+ * Deploy a mavryk-k8s topology in a k8s cluster.
  * Supports either local charts or charts from a repo
  */
 
-export class TezosFaucet extends pulumi.ComponentResource {
-  readonly tezosFaucetHelmValues: any
+export class MavrykFaucet extends pulumi.ComponentResource {
+  readonly mavrykFaucetHelmValues: any
 
   constructor(
     name: string,
@@ -33,17 +33,17 @@ export class TezosFaucet extends pulumi.ComponentResource {
     const inputs: pulumi.Inputs = {
       options: opts,
     }
-    super("pulumi-contrib:components:TezosFaucet", name, inputs, opts)
+    super("pulumi-contrib:components:MavrykFaucet", name, inputs, opts)
 
-    this.tezosFaucetHelmValues = YAML.parse(
+    this.mavrykFaucetHelmValues = YAML.parse(
       fs.readFileSync(params.helmValuesFile, "utf8")
     );
-    this.tezosFaucetHelmValues["faucetPrivateKey"] = params.faucetPrivateKey
-    let chartParams = getChartParams(params, "tezos-faucet");
+    this.mavrykFaucetHelmValues["faucetPrivateKey"] = params.faucetPrivateKey
+    let chartParams = getChartParams(params, "mavryk-faucet");
 
-    if (this.tezosFaucetHelmValues.disableChallenges !== true) {
-      if (!this.tezosFaucetHelmValues.redis) {
-        this.tezosFaucetHelmValues.redis = {}
+    if (this.mavrykFaucetHelmValues.disableChallenges !== true) {
+      if (!this.mavrykFaucetHelmValues.redis) {
+        this.mavrykFaucetHelmValues.redis = {}
       }
 
       const redisPassword = new RandomPassword(
@@ -52,7 +52,7 @@ export class TezosFaucet extends pulumi.ComponentResource {
         { parent: this }
       ).result
 
-      this.tezosFaucetHelmValues.redis.password = redisPassword
+      this.mavrykFaucetHelmValues.redis.password = redisPassword
 
       new k8s.helm.v3.Release(
         `${name}-redis`,
@@ -85,19 +85,19 @@ export class TezosFaucet extends pulumi.ComponentResource {
       )
     }
 
-    const teztnetsDomain = `${name}.testnets.mavryk.network`
-    const faucetDomain = `faucet.${teztnetsDomain}`
-    this.tezosFaucetHelmValues.googleCaptchaSecretKey =
+    const testnetsDomain = `${name}.testnets.mavryk.network`
+    const faucetDomain = `faucet.${testnetsDomain}`
+    this.mavrykFaucetHelmValues.googleCaptchaSecretKey =
       params.faucetRecaptchaSecretKey
-    this.tezosFaucetHelmValues.authorizedHost = `https://${faucetDomain}`
-    this.tezosFaucetHelmValues.config.application.googleCaptchaSiteKey =
+    this.mavrykFaucetHelmValues.authorizedHost = `https://${faucetDomain}`
+    this.mavrykFaucetHelmValues.config.application.googleCaptchaSiteKey =
       params.faucetRecaptchaSiteKey
-    this.tezosFaucetHelmValues.config.application.backendUrl = `https://${faucetDomain}`
-    this.tezosFaucetHelmValues.config.network.name =
-      this.tezosFaucetHelmValues.config.network.name || params.humanName
-    this.tezosFaucetHelmValues.config.network.rpcUrl = `https://rpc.${teztnetsDomain}`
-    this.tezosFaucetHelmValues.ingress.host = faucetDomain
-    this.tezosFaucetHelmValues.ingress.tls = [
+    this.mavrykFaucetHelmValues.config.application.backendUrl = `https://${faucetDomain}`
+    this.mavrykFaucetHelmValues.config.network.name =
+      this.mavrykFaucetHelmValues.config.network.name || params.humanName
+    this.mavrykFaucetHelmValues.config.network.rpcUrl = `https://rpc.${testnetsDomain}`
+    this.mavrykFaucetHelmValues.ingress.host = faucetDomain
+    this.mavrykFaucetHelmValues.ingress.tls = [
       {
         hosts: [faucetDomain],
         secretName: `${faucetDomain}-secret`,
@@ -107,7 +107,7 @@ export class TezosFaucet extends pulumi.ComponentResource {
     const faucetChartValues: any = {
       ...chartParams,
       namespace: params.namespace.metadata.name,
-      values: this.tezosFaucetHelmValues,
+      values: this.mavrykFaucetHelmValues,
       version: params.chartRepoVersion,
     }
 

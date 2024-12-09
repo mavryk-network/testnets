@@ -1,7 +1,7 @@
-tezos_k8s_images:
+mavryk_k8s_images:
   utils: ghcr.io/mavryk-network/mavryk-k8s-utils:6.25.0
 node_config_network:
-  activation_account_name: teztnetsbaker
+  activation_account_name: testnetsbaker
   genesis:
     protocol: Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P
   user_activated_upgrades:
@@ -119,7 +119,7 @@ activation:
   #   bootstrap_smart_rollups:
   #   - address: "sr1RYurGZtN8KNSpkMcCt9CgWeUaNkzsAfXf"
   #     pvm_kind: "wasm_2_0_0"
-  #     kernel: "fromfile#/usr/local/share/tezos/evm_kernel/evm_installer.wasm"
+  #     kernel: "fromfile#/usr/local/share/mavryk/evm_kernel/evm_installer.wasm"
   #     parameters_ty:
   #       prim: pair
   #       args:
@@ -135,13 +135,13 @@ activation:
   #         - prim: bytes
 
 nodes:
-  tezos-baking-node:
+  mavryk-baking-node:
     env:
       all:
-        TEZOS_CLIENT_UNSAFE_DISABLE_DISCLAIMER: "Y"
+        MAVRYK_CLIENT_UNSAFE_DISABLE_DISCLAIMER: "Y"
     instances:
       - bake_using_accounts:
-          - teztnetsbaker
+          - testnetsbaker
         config:
           shell:
             history_mode: archive
@@ -170,7 +170,7 @@ nodes:
 
 # smartRollupNodes:
 #   evm:
-#     operator_account: teztnetsbaker
+#     operator_account: testnetsbaker
 #     rollup_address: sr1RYurGZtN8KNSpkMcCt9CgWeUaNkzsAfXf
 #     ingress:
 #       # ingress details filled by pulumi
@@ -185,7 +185,7 @@ nodes:
 dalNodes:
   dal-bootstrap:
     bootstrapProfile: true
-    node_rpc_url: http://tezos-baking-node-0.tezos-baking-node:8732
+    node_rpc_url: http://mavryk-baking-node-0.mavryk-baking-node:8732
     storageSize: 15Gi
     ingress:
     # ingress details filled up by pulumi
@@ -198,9 +198,9 @@ dalNodes:
       proof_of_work_stamp: "b7edd6ea938998f8f088b83b692baeddb49f5522f07572f9"
   dal-dal1:
     attest_using_accounts:
-      - teztnetsbaker
+      - testnetsbaker
     attesterProfiles: mv1UAzbGkMvuCr7ufR6Z4NxykCn2aj5qTUjm
-    node_rpc_url: http://tezos-baking-node-0.tezos-baking-node:8732
+    node_rpc_url: http://mavryk-baking-node-0.mavryk-baking-node:8732
     storageSize: 80Gi
     ingress:
     # ingress details filled up by pulumi
@@ -214,8 +214,8 @@ dalNodes:
 
 dal_deploy_slot_injector:
   enabled: true
-  inject_using_account: teztnetsbaker
-  node_rpc_url: http://tezos-baking-node-0.tezos-baking-node:8732
+  inject_using_account: testnetsbaker
+  node_rpc_url: http://mavryk-baking-node-0.mavryk-baking-node:8732
   dal_node_rpc_url: http://dal-dal1:10732
   slot_size: 65536
 
@@ -226,7 +226,7 @@ full_snapshot_url: null
 rolling_snapshot_url: null
 rolling_tarball_url: null
 archive_tarball_url: null
-snapshot_source: https://snapshots.tezos.marigold.dev/api/tezos-snapshots.json
+snapshot_source: https://snapshots.mavryk.network/api/mavryk-snapshots.json
 
 images: {}
 
@@ -246,7 +246,7 @@ protocols:
       liquidity_baking_toggle_vote: "pass"
       adaptive_issuance_vote: "on"
 accounts:
-  teztnetsbaker:
+  testnetsbaker:
     # mv1UAzbGkMvuCr7ufR6Z4NxykCn2aj5qTUjm
     bootstrap_balance: "1500000000000"
     is_bootstrap_baker_account: true

@@ -1,5 +1,5 @@
 accounts:
-  teztnetsbaker:
+  testnetsbaker:
     # mv1UAzbGkMvuCr7ufR6Z4NxykCn2aj5qTUjm
     bootstrap_balance: "9700000000000"
     is_bootstrap_baker_account: true
@@ -23,7 +23,7 @@ accounts:
     is_bootstrap_baker_account: false
     bootstrap_balance: "50000000000000000"
   oxheadfaucet:
-    # the faucet on teztnets platform
+    # the faucet on testnets platform
     # mv1NRjkhmeavqVVh716ephuXmaXGe7Y6UyzQ
     key: edpkvGYHoY5kwq13Ak6r4fLa1GGSHKJZVe7xJFV6ZgHwdZeaHy3WZj
     is_bootstrap_baker_account: false
@@ -131,8 +131,8 @@ accounts:
     bootstrap_balance: "700000000000"
 
 node_config_network:
-  activation_account_name: teztnetsbaker
-  chain_name: TEZOS_OXFORDNET_2023-12-07T15:00:00Z
+  activation_account_name: testnetsbaker
+  chain_name: MAVRYK_OXFORDNET_2023-12-07T15:00:00Z
   genesis:
     protocol: Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P
     timestamp: "2023-12-07T15:00:00Z"
@@ -224,13 +224,13 @@ activation:
     testnet_dictator: "mv1Rck3MEfcu8zZ8GDtnu9LjknmYv8bBPJea"
 
 nodes:
-  tezos-baking-node:
+  mavryk-baking-node:
     env:
       all:
-        TEZOS_CLIENT_UNSAFE_DISABLE_DISCLAIMER: "Y"
+        MAVRYK_CLIENT_UNSAFE_DISABLE_DISCLAIMER: "Y"
     instances:
       - bake_using_accounts:
-          - teztnetsbaker
+          - testnetsbaker
         config:
           shell:
             history_mode: archive

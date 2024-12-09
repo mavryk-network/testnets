@@ -1,6 +1,6 @@
 import * as http from 'https';
 
-export class TezosImageResolver {
+export class MavrykImageResolver {
     image = 'mavrykdynamics/mavryk-protocol';
 
     getAuthToken(): Promise<string> {    

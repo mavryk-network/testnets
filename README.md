@@ -1,6 +1,6 @@
 # Testnets
 
-Infrastructure-as-code repo to activate and bootstrap Tezos testnets in a repeatable, automated way.
+Infrastructure-as-code repo to activate and bootstrap Mavryk testnets in a repeatable, automated way.
 
 See [testnets.mavryk.network](https://testnets.mavryk.network) for the list of active Testnets.
 
@@ -8,17 +8,17 @@ See [testnets.mavryk.network](https://testnets.mavryk.network) for the list of a
 
 ### Based on mavryk-k8s
 
-[mavryk-k8s](https://github.com/mavryk-network/mavryk-k8s) is a framework to deploy Tezos nodes or chains using Kubernetes and Helm.
+[mavryk-k8s](https://github.com/mavryk-network/mavryk-k8s) is a framework to deploy Mavryk nodes or chains using Kubernetes and Helm.
 
 See the [mavryk-k8s documentation](https://github.com/mavryk-network/mavryk-k8s/blob/master/README.md)
 
 ### Faucet support
 
-We support the beacon-compatible Tezos Faucet.
+We support the beacon-compatible Mavryk Faucet.
 
 ### Injection of contracts at genesis
 
-A [collection of raw Michelson contracts](https://github.com/mavryk-network/testnets/tree/main/bootstrap_contracts) can be optionally deployed in any Teztnet at genesis.
+A [collection of raw Michelson contracts](https://github.com/mavryk-network/testnets/tree/main/bootstrap_contracts) can be optionally deployed in any Testnet at genesis.
 
 ### Injection of Smart Rollups at genesis
 
@@ -26,27 +26,27 @@ Rollups can be injected at genesis of your test chain. Testnets supports extract
 
 ### Bootstrap baker and bootstrap p2p endpoint
 
-Upon deployment of a Teztnet, a genesis baker will run and its p2p and rpc endpoints will be exposed externally.
+Upon deployment of a Testnet, a genesis baker will run and its p2p and rpc endpoints will be exposed externally.
 Example:
 
 - p2p: `ghostnet.testnets.mavryk.network`
 - rpc `rpc.ghostnet.testnets.mavryk.network`
 
-### `--network` endpoint for Tezos node
+### `--network` endpoint for Mavryk node
 
-Tezos nodes supports downloading of network specification from a json endpoint: `mavkit-node config init --network https://testnets.mavryk.network/<TEZTNET NAME>`
+Mavryk nodes supports downloading of network specification from a json endpoint: `mavkit-node config init --network https://testnets.mavryk.network/<TESTNET NAME>`
 
-The Teztnet platform creates and exposes such endpoints.
+The Testnet platform creates and exposes such endpoints.
 
 ## Automate on Testnets
 
-You are encouraged to build automation to ensure your Tezos project keeps running with the future versions of Tezos shell and/or protocol.
+You are encouraged to build automation to ensure your Mavryk project keeps running with the future versions of Mavryk shell and/or protocol.
 
-This endpoint lists the current active testnets: [https://testnets.mavryk.network/teztnets.json](https://testnets.mavryk.network/teztnets.json)
+This endpoint lists the current active testnets: [https://testnets.mavryk.network/testnets.json](https://testnets.mavryk.network/testnets.json)
 
 ## Add new Testnets or modify existing Testnets
 
-Each Teztnet is defined within a subdirectory of the `/networks` directory in this repository. The Teztnet directory must contain the following files:
+Each Testnet is defined within a subdirectory of the `/networks` directory in this repository. The Testnet directory must contain the following files:
 
 - A Helm chart `values.yaml` file
 - Optionally, a Helm chart `faucet_values.yaml` file if deploying a faucet
@@ -63,9 +63,9 @@ The Helm chart values.yaml lets you customize your chain in many ways:
 - specify user-activated upgrades for hard-forks at a given length
 - specify the list of baker/endorser binaries to run.
 
-Look in any Teztnet directory's values.yaml file in [`/networks`](/networks) for reference as to how to configure your own Teztnet.
+Look in any Testnet directory's values.yaml file in [`/networks`](/networks) for reference as to how to configure your own Testnet.
 
-The [default Helm values.yaml](https://github.com/mavryk-network/mavryk-k8s/blob/master/charts/tezos/values.yaml) has details on every possible way to customize your teztnet.
+The [default Helm values.yaml](https://github.com/mavryk-network/mavryk-k8s/blob/master/charts/mavryk/values.yaml) has details on every possible way to customize your testnet.
 
 ## testnets.mavryk.network website
 
@@ -74,8 +74,8 @@ The website is created with Jekyll from Markdown files generated from Jinja temp
 To build the website locally, from the top-level dir of the repo:
 
 1. run `pulumi stack output networks > networks.json`
-1. run `pulumi stack output teztnets > teztnets.json`
-1. run `python teztnets_xyz_page/release.py`
+1. run `pulumi stack output testnets > testnets.json`
+1. run `python testnets_xyz_page/release.py`
 1. `cd target/release`
 1. run `bundle install`
 1. run `bundle exec jekyll serve`

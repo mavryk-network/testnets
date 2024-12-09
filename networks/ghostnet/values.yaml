@@ -1,6 +1,6 @@
 node_config_network:
   activation_account_name: oxheadbaker
-  chain_name: TEZOS_ITHACANET_2022-01-25T15:00:00Z
+  chain_name: MAVRYK_ITHACANET_2022-01-25T15:00:00Z
   genesis:
     block: BLockGenesisGenesisGenesisGenesisGenesis1db77eJNeJ9
     protocol: Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P
@@ -62,7 +62,7 @@ activation:
      minimal_block_delay: '15'
 
 nodes:
-  tezos-baking-node:
+  mavryk-baking-node:
     env:
       baker:
         BAKER_EXTRA_ARGS: "--operations-pool https://qc8esk5gp0.fbe-baker.midl.dev/operations-pool"

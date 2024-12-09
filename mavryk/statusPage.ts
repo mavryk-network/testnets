@@ -3,7 +3,7 @@ import { getChartParams } from './chartResolver'
 
 export interface Parameters {
   readonly networks: any;
-  readonly teztnets: any;
+  readonly testnets: any;
   readonly statusPageFqdn: string;
   readonly chartPath?: string
   readonly chartRepoVersion?: string
@@ -24,8 +24,8 @@ const deployStatusPage = async (
       node_monitor: {
         nodes: Object.keys(params.networks)
           .map((n) => ({
-            url: `http://tezos-node-rpc.${n === "ghostnet" ? 'ghostnet-nodes' : n}:8732`,
-            name: params.teztnets[n]['human_name']
+            url: `http://mavryk-node-rpc.${n === "ghostnet" ? 'ghostnet-nodes' : n}:8732`,
+            name: params.testnets[n]['human_name']
           }))
       },
       ui: {

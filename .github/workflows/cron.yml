@@ -20,4 +20,4 @@ jobs:
     secrets: inherit
     with:
       networks: ${{ vars.NETWORKS }}
-      teztnets: ${{ vars.TESTNETS }}
+      testnets: ${{ vars.TESTNETS }}

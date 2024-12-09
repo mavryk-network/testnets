@@ -5,12 +5,12 @@ import * as k8s from "@pulumi/kubernetes"
 import * as blake2b from "blake2b"
 import * as bs58check from "bs58check"
 
-import deployStatusPage from "./tezos/statusPage"
-import deployMetricsPage from "./tezos/metricsPage"
-import { TezosChain } from "./tezos/chain"
-import { TezosNodes } from "./tezos/nodes"
-import { TezosFaucet } from "./tezos/faucet"
-import getPublicKeyFromPrivateKey from './tezos/keys'
+import deployStatusPage from "./mavryk/statusPage"
+import deployMetricsPage from "./mavryk/metricsPage"
+import { MavrykChain } from "./mavryk/chain"
+import { MavrykNodes } from "./mavryk/nodes"
+import { MavrykFaucet } from "./mavryk/faucet"
+import getPublicKeyFromPrivateKey from './mavryk/keys'
 
 const cfg = new pulumi.Config()
 const faucetPrivateKey = cfg.requireSecret("faucet-private-key")
@@ -19,14 +19,14 @@ const faucetRecaptchaSecretKey = cfg.requireSecret(
   "faucet-recaptcha-secret-key"
 )
 const private_oxhead_baking_key = cfg.requireSecret(
-  "private-teztnets-baking-key"
+  "private-testnets-baking-key"
 )
-const private_teztnets_baking_key = cfg.requireSecret(
-  "tf-teztnets-baking-key"
+const private_testnets_baking_key = cfg.requireSecret(
+  "tf-testnets-baking-key"
 )
 
 
-const stackRef = new pulumi.StackReference(`tacoinfra/tf-teztnets-infra/prod`)
+const stackRef = new pulumi.StackReference(`tacoinfra/tf-testnets-infra/prod`)
 
 const kubeconfig = stackRef.requireOutput("kubeconfig")
 
@@ -55,7 +55,7 @@ new gcp.storage.BucketIAMMember("publicRead", {
 
 // Define your domain name and a suitable name for the managed zone
 const domainName = "testnets.mavryk.network";
-const managedZoneName = "teztnets-zone";
+const managedZoneName = "testnets-zone";
 
 // Create a managed DNS zone
 const dnsZone = new gcp.dns.ManagedZone(managedZoneName, {
@@ -67,7 +67,7 @@ const dnsZone = new gcp.dns.ManagedZone(managedZoneName, {
 
 // Define another domain name and a suitable name for the managed zone
 const domainNameCom = "testnets.mavryk.network";
-const managedZoneNameCom = "teztnetscom-zone";
+const managedZoneNameCom = "testnetscom-zone";
 
 // Create a managed DNS zone
 const dnsZoneCom = new gcp.dns.ManagedZone(managedZoneNameCom, {
@@ -80,7 +80,7 @@ const dnsZoneCom = new gcp.dns.ManagedZone(managedZoneNameCom, {
 // GitHub Pages IP addresses
 
 // Create A records for each GitHub Pages IP
-new gcp.dns.RecordSet("teztnetsSiteRecord", {
+new gcp.dns.RecordSet("testnetsSiteRecord", {
   name: domainName + ".",
   managedZone: dnsZone.name,
   type: "A",
@@ -94,7 +94,7 @@ new gcp.dns.RecordSet("teztnetsSiteRecord", {
 });
 
 // Create A records for each GitHub Pages IP
-new gcp.dns.RecordSet("teztnetsComSiteRecord", {
+new gcp.dns.RecordSet("testnetsComSiteRecord", {
   name: domainNameCom + ".",
   managedZone: dnsZoneCom.name,
   type: "A",
@@ -108,7 +108,7 @@ new gcp.dns.RecordSet("teztnetsComSiteRecord", {
 });
 
 // chains
-const dailynet_chain = new TezosChain(
+const dailynet_chain = new MavrykChain(
   {
     category: periodicCategory,
     humanName: "Dailynet",
@@ -121,13 +121,13 @@ const dailynet_chain = new TezosChain(
       "exchanger.json",
     ],
     helmValuesFile: "networks/dailynet/values.yaml",
-    bakingPrivateKey: private_teztnets_baking_key,
-    chartPath: "networks/dailynet/tezos-k8s", // point to a submodule, to run unreleased tezos-k8s code
-    //chartRepoVersion: "6.25.0", // point to a release of tezos-k8s. This should be the default state.
+    bakingPrivateKey: private_testnets_baking_key,
+    chartPath: "networks/dailynet/mavryk-k8s", // point to a submodule, to run unreleased mavryk-k8s code
+    //chartRepoVersion: "6.25.0", // point to a release of mavryk-k8s. This should be the default state.
   },
   provider
 )
-new TezosFaucet(
+new MavrykFaucet(
   dailynet_chain.name,
   {
     humanName: "Dailynet",
@@ -136,13 +136,13 @@ new TezosFaucet(
     faucetPrivateKey: faucetPrivateKey,
     faucetRecaptchaSiteKey: faucetRecaptchaSiteKey,
     faucetRecaptchaSecretKey: faucetRecaptchaSecretKey,
-    //chartPath: "networks/dailynet/tezos-k8s",
+    //chartPath: "networks/dailynet/mavryk-k8s",
     chartRepoVersion: "6.25.0",
   },
   provider
 )
 
-const weeklynet_chain = new TezosChain(
+const weeklynet_chain = new MavrykChain(
   {
     category: periodicCategory,
     humanName: "Weeklynet",
@@ -155,14 +155,14 @@ const weeklynet_chain = new TezosChain(
       // "evm_bridge.json",
     ],
     helmValuesFile: "networks/weeklynet/values.yaml",
-    bakingPrivateKey: private_teztnets_baking_key,
-    chartPath: "networks/dailynet/tezos-k8s", // point to a submodule, to run unreleased tezos-k8s code
-    //chartRepoVersion: "6.25.0", // point to a release of tezos-k8s. This should be the default state.
+    bakingPrivateKey: private_testnets_baking_key,
+    chartPath: "networks/dailynet/mavryk-k8s", // point to a submodule, to run unreleased mavryk-k8s code
+    //chartRepoVersion: "6.25.0", // point to a release of mavryk-k8s. This should be the default state.
     bootstrapPeers: [],
   },
   provider
 )
-new TezosFaucet(
+new MavrykFaucet(
   weeklynet_chain.name,
   {
     humanName: "Weeklynet",
@@ -180,10 +180,10 @@ new TezosFaucet(
 // * launched long time ago, launch code is not in the active code path
 // * heavy usage on the RPC endpoint requires a more elaborate setup
 //   with archive/rolling nodes, NGINX path filtering and rate limiting.
-// Consequently, we made a special class "TezosNodes" for the purpose.
+// Consequently, we made a special class "MavrykNodes" for the purpose.
 const ghostnetRollingVersion = "v18.1";
 const ghostnetArchiveVersion = "v18.1";
-const ghostnet_chain = new TezosNodes(
+const ghostnet_chain = new MavrykNodes(
   "ghostnet-nodes",
   {
     chainName: "ghostnet",
@@ -198,7 +198,7 @@ const ghostnet_chain = new TezosNodes(
   },
   provider,
 )
-new TezosFaucet(
+new MavrykFaucet(
   "ghostnet",
   {
     humanName: "Ghostnet",
@@ -212,7 +212,7 @@ new TezosFaucet(
   provider
 )
 
-const nairobinet_chain = new TezosChain(
+const nairobinet_chain = new MavrykChain(
   {
     category: protocolCategory,
     humanName: "Nairobinet",
@@ -236,7 +236,7 @@ const nairobinet_chain = new TezosChain(
   },
   provider
 )
-new TezosFaucet(
+new MavrykFaucet(
   nairobinet_chain.name,
   {
     namespace: nairobinet_chain.namespace,
@@ -250,14 +250,14 @@ new TezosFaucet(
   provider
 )
 
-const oxfordnet_chain = new TezosChain(
+const oxfordnet_chain = new MavrykChain(
   {
     category: protocolCategory,
     humanName: "Oxfordnet",
     description: "Test Chain for the Oxford Protocol Proposal",
     activationBucket: activationBucket,
     helmValuesFile: "networks/oxfordnet/values.yaml",
-    bakingPrivateKey: private_teztnets_baking_key,
+    bakingPrivateKey: private_testnets_baking_key,
     bootstrapPeers: ["oxfordnet.tzinit.net"],
     rpcUrls: [],
     indexers: [
@@ -266,7 +266,7 @@ const oxfordnet_chain = new TezosChain(
   },
   provider
 )
-new TezosFaucet(
+new MavrykFaucet(
   oxfordnet_chain.name,
   {
     namespace: oxfordnet_chain.namespace,
@@ -280,21 +280,21 @@ new TezosFaucet(
   provider
 )
 
-function getNetworks(chains: TezosChain[]): object {
+function getNetworks(chains: MavrykChain[]): object {
   const networks: { [name: string]: object } = {}
 
   chains.forEach(function(chain) {
     const bootstrapPeers: string[] = Object.assign([], chain.params.bootstrapPeers) // clone
     bootstrapPeers.splice(0, 0, `${chain.name}.${domainNameCom}`)
 
-    // genesis_pubkey is the public key associated with the $TEZOS_OXHEAD_BAKING_KEY private key in github secrets
+    // genesis_pubkey is the public key associated with the $MAVRYK_OXHEAD_BAKING_KEY private key in github secrets
     // TODO: generate it dynamically based on privkey
     let genesisPubkey = getPublicKeyFromPrivateKey(chain.params.bakingPrivateKey)
     const network = Object.assign(
       {},
-      chain.tezosHelmValues["node_config_network"]
+      chain.mavrykHelmValues["node_config_network"]
     ) // clone
-    network["sandboxed_chain_name"] = "SANDBOXED_TEZOS"
+    network["sandboxed_chain_name"] = "SANDBOXED_MAVRYK"
     network["default_bootstrap_peers"] = bootstrapPeers
     network["genesis_parameters"] = {
       values: {
@@ -305,7 +305,7 @@ function getNetworks(chains: TezosChain[]): object {
       delete network["activation_account_name"]
     }
     if ("genesis" in network && "block" in network["genesis"] === false) {
-      // If block hash not passed, use tezos-k8s convention:
+      // If block hash not passed, use mavryk-k8s convention:
       // deterministically derive it from chain name.
       var input = Buffer.from(network["chain_name"])
       var gbk = blake2b(32).update(input).digest("hex")
@@ -324,13 +324,13 @@ function getNetworks(chains: TezosChain[]): object {
   return networks
 }
 
-function getTestnets(chains: TezosChain[]): object {
-  const teztnets: { [name: string]: { [name: string]: Object } } = {}
+function getTestnets(chains: MavrykChain[]): object {
+  const testnets: { [name: string]: { [name: string]: Object } } = {}
 
   chains.forEach(function(chain) {
     let faucetUrl = `https://faucet.${chain.name}.${domainNameCom}`
-    teztnets[chain.name] = {
-      chain_name: chain.tezosHelmValues["node_config_network"]["chain_name"],
+    testnets[chain.name] = {
+      chain_name: chain.mavrykHelmValues["node_config_network"]["chain_name"],
       network_url: `https://${domainNameCom}/${chain.name}`,
       human_name: chain.params.humanName,
       description: chain.params.description,
@@ -347,11 +347,11 @@ function getTestnets(chains: TezosChain[]): object {
       indexers: chain.params.indexers || [],
     }
     if (Object.keys(chain.dalNodes).length > 0) {
-      teztnets[chain.name].dal_nodes = chain.dalNodes;
+      testnets[chain.name].dal_nodes = chain.dalNodes;
     }
   })
 
-  return teztnets
+  return testnets
 }
 
 // We do not host a ghostnet node here.
@@ -359,7 +359,7 @@ function getTestnets(chains: TezosChain[]): object {
 // sensitive infra cluster.
 // Instead, we hardcode the values to be displayed on the webpage.
 const ghostnetNetwork = {
-  chain_name: "TEZOS_ITHACANET_2022-01-25T15:00:00Z",
+  chain_name: "MAVRYK_ITHACANET_2022-01-25T15:00:00Z",
   default_bootstrap_peers: [
     `ghostnet.${domainNameCom}`,
     "ghostnet.boot.ecadinfra.com",
@@ -375,7 +375,7 @@ const ghostnetNetwork = {
       genesis_pubkey: "edpkuYLienS3Xdt5c1vfRX1ibMxQuvfM67ByhJ9nmRYYKGAAoTq1UC",
     },
   },
-  sandboxed_chain_name: "SANDBOXED_TEZOS",
+  sandboxed_chain_name: "SANDBOXED_MAVRYK",
   user_activated_upgrades: [
     {
       level: 8191,
@@ -407,10 +407,10 @@ export const networks = {
 
 // We hardcode the values to be displayed on the webpage.
 const lastBakingDaemonMainnetGhostnet = "PtNairob"
-const ghostnetTeztnet = {
+const ghostnetTestnet = {
   category: "Long-running Testnets",
-  chain_name: "TEZOS_ITHACANET_2022-01-25T15:00:00Z",
-  description: "Ghostnet is the long-running testnet for Tezos.",
+  chain_name: "MAVRYK_ITHACANET_2022-01-25T15:00:00Z",
+  description: "Ghostnet is the long-running testnet for Mavryk.",
   docker_build: `mavrykdynamics/mavryk-protocol:${ghostnetRollingVersion}`,
   faucet_url: `https://faucet.ghostnet.${domainNameCom}`,
   git_ref: ghostnetRollingVersion,
@@ -436,13 +436,13 @@ const ghostnetTeztnet = {
   ],
 }
 
-// We also add mainnet to the teztnets metadata.
+// We also add mainnet to the testnets metadata.
 // Some systems rely on this to provide lists of third-party RPC services
 // to their users. For example, umami wallet.
 const mainnetMetadata = {
   category: "Long-running Testnets",
-  chain_name: "TEZOS_MAINNET",
-  description: "Tezos Mainnet",
+  chain_name: "MAVRYK_MAINNET",
+  description: "Mavryk Mainnet",
   docker_build: `mavrykdynamics/mavryk-protocol:${ghostnetRollingVersion}`,
   git_ref: ghostnetRollingVersion,
   human_name: "Mainnet",
@@ -466,14 +466,14 @@ const mainnetMetadata = {
   ],
 }
 
-export const teztnets = {
+export const testnets = {
   ...getTestnets([dailynet_chain, weeklynet_chain, nairobinet_chain, oxfordnet_chain]),
-  ...{ ghostnet: ghostnetTeztnet, mainnet: mainnetMetadata },
+  ...{ ghostnet: ghostnetTestnet, mainnet: mainnetMetadata },
 }
 
 deployStatusPage(provider, {
   networks: networks,
-  teztnets: teztnets,
+  testnets: testnets,
   statusPageFqdn: `status.${domainNameCom}`,
   chartRepoVersion: "6.25.0"
 });
