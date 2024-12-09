@@ -40,7 +40,7 @@ favicon: "./favicon.ico"
 # their entries' file path in the `include:` list.
 #
 include:
-  - 'teztnets.json'
+  - 'testnets.json'
   - '*net'
 exclude:
   - bundle/
