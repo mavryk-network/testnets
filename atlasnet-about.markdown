@@ -11,7 +11,7 @@ Test Chain for the Atlas Protocol Proposal.
 | Public RPC endpoints | [https://atlasnet.rpc.mavryk.network](https://atlasnet.rpc.mavryk.network/chains/main/chain_id)<br/> |
 | Faucet | [Atlasnet faucet](https://atlasnet.faucet.mavryk.network) |
 | Full network name | `MAVRYK_ATLASNET_2024-02-23T10:39:51Z` |
-| Mavryk docker build | mavrykdynamics/mavryk:v19.3 |
+| Mavryk docker build | mavrykdynamics/mavryk:mavkit-v20.3-rc1 |
 | Activated on | 2024-02-23T10:39:51Z |
 | Block Explorers | [Nexus](https://nexus.mavryk.org) |
 
@@ -33,7 +33,7 @@ Adaptive Issuance is disabled on Atlasnet.
 To join Atlasnet with docker, open a shell in the container:
 
 ```
-docker run -it --entrypoint=/bin/sh mavrykdynamics/mavryk:v19.3
+docker run -it --entrypoint=/bin/sh mavrykdynamics/mavryk:mavkit-v20.3-rc1
 ```
 
 #### Alternative: Build the software
