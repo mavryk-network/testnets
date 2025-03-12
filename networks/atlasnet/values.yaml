@@ -154,4 +154,6 @@ protocols:
       adaptive_issuance_vote: "on"
 
 bootstrap_peers:
-  - atlasnet.rpc.mavryk.network
+  - atlasnet.rpc.mavryk.network:9732
+  - atlasnet.rpc.mavryk.network:9733
+  - atlasnet.rpc.mavryk.network:9734
