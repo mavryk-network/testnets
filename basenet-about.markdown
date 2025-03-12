@@ -12,7 +12,7 @@ Basenet is the long-running testnet for Mavryk.
 | Faucet | [Basenet faucet](https://atlasnet.faucet.mavryk.network) |
 | Full network name | `MAVRYK_ATLASNET_2024-02-23T10:39:51Z` |
 | Mavryk docker build | mavrykdynamics/mavryk:mavkit-v20.3-rc1 |
-| Activated on | 2024-02-23T10:39:51Z |
+| Activated on | 2025-03-12T14:27:57Z |
 | Block Explorers | [Nexus](https://nexus.mavryk.org) |
 
 

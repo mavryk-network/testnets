@@ -1,9 +1,9 @@
 {
-  "chain_name": "MAVRYK_ATLASNET_2024-02-23T10:39:51Z",
+  "chain_name": "MAVRYK_ATLASNET_2025-03-12T14:27:57Z",
   "genesis": {
-    "block": "BLockGenesisGenesisGenesisGenesisGenesis7ddfecenZrc",
+    "block": "BLockGenesisGenesisGenesisGenesisGenesisd727aarXu1g",
     "protocol": "Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P",
-    "timestamp": "2024-02-23T10:39:51Z"
+    "timestamp": "2025-03-12T14:27:57Z"
   },
   "sandboxed_chain_name": "SANDBOXED_mavryk",
   "default_bootstrap_peers": [

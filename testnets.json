@@ -20,7 +20,7 @@
     "rpc_urls": [
       "https://atlasnet.rpc.mavryk.network"
     ],
-    "activated_on": "2024-02-23"
+    "activated_on": "2025-03-12"
   },
   "basenet": {
     "category": "Long-running Testnets",
@@ -43,6 +43,6 @@
     "rpc_urls": [
       "https://atlasnet.rpc.mavryk.network"
     ],
-    "activated_on": "2024-02-23"
+    "activated_on": "2025-03-12"
   }
 }
