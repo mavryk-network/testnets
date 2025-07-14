@@ -7,9 +7,13 @@
   },
   "sandboxed_chain_name": "SANDBOXED_mavryk",
   "default_bootstrap_peers": [
-    "atlasnet.rpc.mavryk.network:9732",
-    "atlasnet.rpc.mavryk.network:9733",
-    "atlasnet.rpc.mavryk.network:9734"
+    "atlasnet.rpc.mavryk.network:9732"
+  ],
+  "user_activated_upgrades": [
+    {
+      "level": 1310720,
+      "replacement_protocol": "PtBzwViMCC1gfm98y5TDKqz2e3vjBXPAUoWu7jfEcN6yj2ZhCyT"
+    }
   ],
   "genesis_parameters": {
     "values": {
