@@ -11,7 +11,7 @@ Basenet is the long-running testnet for Mavryk.
 | Public RPC endpoints | [https://atlasnet.rpc.mavryk.network](https://atlasnet.rpc.mavryk.network/chains/main/chain_id)<br/> |
 | Faucet | [Basenet faucet](https://atlasnet.faucet.mavryk.network) |
 | Full network name | `MAVRYK_ATLASNET_2024-02-23T10:39:51Z` |
-| Mavryk docker build | mavrykdynamics/mavryk:mavkit-v20.3-rc1 |
+| Mavryk docker build | mavrykdynamics/mavryk:mavkit-v20.3-rc2 |
 | Activated on | 2025-03-12T14:27:57Z |
 | Block Explorers | [Nexus](https://nexus.mavryk.org) |
 
@@ -29,7 +29,7 @@ Basenet is the long-running testnet for Mavryk.
 To join Basenet with docker, open a shell in the container:
 
 ```
-docker run -it --entrypoint=/bin/sh mavrykdynamics/mavryk:mavkit-v20.3-rc1
+docker run -it --entrypoint=/bin/sh mavrykdynamics/mavryk:mavkit-v20.3-rc2
 ```
 
 #### Alternative: Build the software
