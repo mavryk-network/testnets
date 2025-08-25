@@ -7,7 +7,7 @@
   },
   "sandboxed_chain_name": "SANDBOXED_mavryk",
   "default_bootstrap_peers": [
-    "atlasnet.rpc.mavryk.network:9732"
+    "atlasnet.boot.mavryk.network:9732"
   ],
   "user_activated_upgrades": [
     {
