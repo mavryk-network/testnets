@@ -1,6 +1,6 @@
 {
-  "name": "teztnets",
-  "description": "Infrastructure-as-code repo to activate and bootstrap Tezos testnets in a repeatable, automated way.",
+  "name": "testnets",
+  "description": "Infrastructure-as-code repo to activate and bootstrap Mavryk testnets in a repeatable, automated way.",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {

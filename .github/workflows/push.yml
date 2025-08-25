@@ -4,20 +4,21 @@ on:
   push:
     branches:
       - main
+      - mavryk-protocol-refactoring
 
 jobs:
-  up:
-    name: Pulumi Up
-    uses: ./.github/workflows/_pulumi.yml
-    secrets: inherit
-    with:
-      pulumi-command: up
+  # up:
+  #   name: Pulumi Up
+  #   uses: ./.github/workflows/_pulumi.yml
+  #   secrets: inherit
+  #   with:
+  #     pulumi-command: up
 
   publish:
-    name: teztnets.xyz build
-    needs: up
+    name: testnets.mavryk.network build
+    # needs: up
     uses: ./.github/workflows/_publish.yml
     secrets: inherit
     with:
-      networks: ${{ needs.up.outputs.networks }}
-      teztnets: ${{ needs.up.outputs.teztnets }}
+      networks: ${{ vars.NETWORKS }}
+      testnets: ${{ vars.TESTNETS }}
