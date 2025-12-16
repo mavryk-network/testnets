@@ -23,13 +23,13 @@ for network_name in networks:
 category_desc = {
     "Long-running Testnets": "If you are not sure, pick this one.",
     "Protocol Testnets": "Testnets deployed specifically to test new Mavryk protocol proposals.",
-    "Periodic Testnets": "Testnets that restart regularly and track the development of the master branch of [Mavkit repo](https://gitlab.com/mavryk-network/mavryk-protocol/).\n \n☠️ You probably don't want this unless you are a core protocol developer.",
+    # "Periodic Testnets": "Testnets that restart regularly and track the development of the master branch of [Mavkit repo](https://gitlab.com/mavryk-network/mavryk-protocol/).\n \n☠️ You probably don't want this unless you are a core protocol developer.",
 }
 
 nested_testnets = {
     "Long-running Testnets": {},
     "Protocol Testnets": {},
-    "Periodic Testnets": {},
+    # "Periodic Testnets": {},
 }
 
 for k, v in testnets.items():
