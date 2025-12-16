@@ -10,7 +10,7 @@
     "indexers": [
       {
         "name": "Nexus",
-        "url": "https://nexus.mavryk.org"
+        "url": "https://atlasnet.nexus.mavryk.org"
       }
     ],
     "last_baking_daemon": "PtAtLas",
@@ -24,25 +24,25 @@
   },
   "basenet": {
     "category": "Long-running Testnets",
-    "chain_name": "MAVRYK_ATLASNET_2024-02-23T10:39:51Z",
+    "chain_name": "MAVRYK_BASENET_2025-08-14T11:46:32Z",
     "description": "Basenet is the long-running testnet for Mavryk.",
-    "docker_build": "mavrykdynamics/mavryk:mavkit-v20.3-rc2",
-    "faucet_url": "https://atlasnet.faucet.mavryk.network",
+    "docker_build": "mavrykdynamics/mavryk:mavkit-v20.3",
+    "faucet_url": "https://basenet.faucet.mavryk.network",
     "git_ref": "b1e1def27039b8cede461b6614af1addefbd69da",
     "human_name": "Basenet",
     "indexers": [
       {
         "name": "Nexus",
-        "url": "https://nexus.mavryk.org"
+        "url": "https://basenet.nexus.mavryk.org"
       }
     ],
-    "last_baking_daemon": "PtAtLas",
+    "last_baking_daemon": "PtBoreas",
     "masked_from_main_page": false,
     "network_url": "https://testnets.mavryk.network/basenet",
-    "rpc_url": "https://atlasnet.rpc.mavryk.network",
+    "rpc_url": "https://basenet.rpc.mavryk.network",
     "rpc_urls": [
-      "https://atlasnet.rpc.mavryk.network"
+      "https://basenet.rpc.mavryk.network"
     ],
-    "activated_on": "2025-03-12"
+    "activated_on": "2025-08-14"
   }
 }

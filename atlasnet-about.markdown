@@ -13,7 +13,7 @@ Test Chain for the Atlas Protocol Proposal.
 | Full network name | `MAVRYK_ATLASNET_2024-02-23T10:39:51Z` |
 | Mavryk docker build | mavrykdynamics/mavryk:mavkit-v20.3-rc2 |
 | Activated on | 2025-03-12T14:27:57Z |
-| Block Explorers | [Nexus](https://nexus.mavryk.org) |
+| Block Explorers | [Nexus](https://atlasnet.nexus.mavryk.org) |
 
 
 Atlasnet has 8 second blocks (twice faster than mainnet).

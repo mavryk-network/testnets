@@ -12,7 +12,7 @@ If you are not sure, pick this one.
 
 | | Activated on | Faucet |
 |-------|---------------------|--|
-| [Basenet](/basenet-about) | `2025-03-12` | [Faucet](https://atlasnet.faucet.mavryk.network) |
+| [Basenet](/basenet-about) | `2025-08-14` | [Faucet](https://basenet.faucet.mavryk.network) |
 
 
 
@@ -23,17 +23,6 @@ Testnets deployed specifically to test new Mavryk protocol proposals.
 | | Activated on | Faucet |
 |-------|---------------------|--|
 | [Atlasnet](/atlasnet-about) | `2025-03-12` | [Faucet](https://atlasnet.faucet.mavryk.network) |
-
-
-
-# Periodic Testnets
-
-Testnets that restart regularly and track the development of the master branch of [Mavkit repo](https://gitlab.com/mavryk-network/mavryk-protocol/).
- 
-☠️ You probably don't want this unless you are a core protocol developer.
-
-| | Activated on | Faucet |
-|-------|---------------------|--|
 
 
 

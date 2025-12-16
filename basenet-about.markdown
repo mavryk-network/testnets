@@ -8,12 +8,12 @@ Basenet is the long-running testnet for Mavryk.
 
 | | |
 |-------|---------------------|
-| Public RPC endpoints | [https://atlasnet.rpc.mavryk.network](https://atlasnet.rpc.mavryk.network/chains/main/chain_id)<br/> |
-| Faucet | [Basenet faucet](https://atlasnet.faucet.mavryk.network) |
-| Full network name | `MAVRYK_ATLASNET_2024-02-23T10:39:51Z` |
-| Mavryk docker build | mavrykdynamics/mavryk:mavkit-v20.3-rc2 |
-| Activated on | 2025-03-12T14:27:57Z |
-| Block Explorers | [Nexus](https://nexus.mavryk.org) |
+| Public RPC endpoints | [https://basenet.rpc.mavryk.network](https://basenet.rpc.mavryk.network/chains/main/chain_id)<br/> |
+| Faucet | [Basenet faucet](https://basenet.faucet.mavryk.network) |
+| Full network name | `MAVRYK_BASENET_2025-08-14T11:46:32Z` |
+| Mavryk docker build | mavrykdynamics/mavryk:mavkit-v20.3 |
+| Activated on | 2025-08-14T11:46:32Z |
+| Block Explorers | [Nexus](https://basenet.nexus.mavryk.org) |
 
 
 
@@ -29,7 +29,7 @@ Basenet is the long-running testnet for Mavryk.
 To join Basenet with docker, open a shell in the container:
 
 ```
-docker run -it --entrypoint=/bin/sh mavrykdynamics/mavryk:mavkit-v20.3-rc2
+docker run -it --entrypoint=/bin/sh mavrykdynamics/mavryk:mavkit-v20.3
 ```
 
 #### Alternative: Build the software
@@ -65,7 +65,7 @@ mavkit-node run --rpc-addr 127.0.0.1:8732
 
 ### Bake on the Basenet network
 
-To improve reliability of the chain, you can take part in the consensus by becoming a baker. In that case, you will need some test tokens from the [faucet](https://atlasnet.faucet.mavryk.network).
+To improve reliability of the chain, you can take part in the consensus by becoming a baker. In that case, you will need some test tokens from the [faucet](https://basenet.faucet.mavryk.network).
 
 If you are not a bootstrap baker, you need to register your key as a delegate using your alias or `pkh`. For instance:
 ```bash=2
@@ -74,12 +74,12 @@ mavkit-client register key mykey as delegate
 
 You may now launch the baker process.
 ```bash=3
-mavkit-baker-PtAtLas run with local node ~/.mavryk-node mykey --liquidity-baking-toggle-vote pass
+mavkit-baker-PtBoreas run with local node ~/.mavryk-node mykey --liquidity-baking-toggle-vote pass
 ```
 
 You may run the accuser as well:
 ```bash=3
-mavkit-accuser-PtAtLas run
+mavkit-accuser-PtBoreas run
 ```
 
 Note that you need a minimum amount of tez to get baking rights. If you are not a bootstrap baker, it will take you several cycles to start baking.
