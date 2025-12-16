@@ -1,0 +1,89 @@
+#!/bin/python
+import json
+import os
+import shutil
+import jinja2
+
+shutil.copytree("testnets_xyz_page/website", "target/release", dirs_exist_ok=True)
+
+testnets = {}
+with open("./testnets.json", "r") as testnets_file:
+    testnets = json.load(testnets_file)
+
+networks = {}
+with open("./networks.json", "r") as networks_file:
+    networks = json.load(networks_file)
+
+for network_name in networks:
+    with open(f"target/release/{network_name}", "w") as out_file:
+        print(json.dumps(networks[network_name], indent=2), file=out_file)
+
+# group by category for human rendering
+# Order manually. Start with long-running.
+category_desc = {
+    "Long-running Testnets": "If you are not sure, pick this one.",
+    "Protocol Testnets": "Testnets deployed specifically to test new Mavryk protocol proposals.",
+    # "Periodic Testnets": "Testnets that restart regularly and track the development of the master branch of [Mavkit repo](https://gitlab.com/mavryk-network/mavryk-protocol/).\n \n☠️ You probably don't want this unless you are a core protocol developer.",
+}
+
+nested_testnets = {
+    "Long-running Testnets": {},
+    "Protocol Testnets": {},
+    # "Periodic Testnets": {},
+}
+
+for k, v in testnets.items():
+    if v["masked_from_main_page"]:
+        continue
+    if v["category"] not in nested_testnets:
+        nested_testnets[v["category"]] = {}
+    nested_testnets[v["category"]][k] = v
+    nested_testnets[v["category"]][k]["activated_on"] = networks[k]["genesis"][
+        "timestamp"
+    ].split("T")[0]
+
+index = jinja2.Template(open("testnets_xyz_page/index.md.jinja2").read()).render(
+    testnets=nested_testnets, category_desc=category_desc
+)
+
+with open("target/release/index.markdown", "a") as out_file:
+    print(index, file=out_file)
+with open("target/release/testnets.json", "w") as out_file:
+    print(json.dumps(testnets, indent=2), file=out_file)
+
+for k, v in testnets.items():
+    if k == "mainnet":
+        continue
+
+    v["release"] = None
+    if "mavrykdynamics/mavryk-protocol:v" in v["docker_build"]:
+        v["release"] = v["docker_build"].split("mavrykdynamics/mavryk-protocol:")[1]
+    v["docker_build_hyperlinked"] = v["docker_build"]
+
+    if v["docker_build"].startswith("mavrykdynamics/mavryk-protocol"):
+        # build from docker hub, providing a link
+        v["docker_build_hyperlinked"] = (
+            "["
+            + v["docker_build"]
+            + "](https://hub.docker.com/r/mavrykdynamics/mavryk-protocol/tags?page=1&ordering=last_updated&name="
+            + v["docker_build"].replace("mavrykdynamics/mavryk-protocol:", "")
+            + ")"
+        )
+
+    v["git_repo"] = "git@gitlab.com:mavryk-network/mavryk-protocol.git"
+
+    readme = ""
+
+    readme_path = f"networks/{k.split('-')[0]}/README.md"
+    if os.path.exists(readme_path):
+        with open(readme_path) as readme_file:
+            readme = readme_file.read()
+
+    testnet_md = jinja2.Template(open("testnets_xyz_page/testnet_page.md.jinja2").read()).render(
+        k=k, v=v, network_params=networks[k], readme=readme
+    )
+
+    with open(
+        f"target/release/{v['human_name'].lower()}-about.markdown", "w"
+    ) as out_file:
+        print(testnet_md, file=out_file)

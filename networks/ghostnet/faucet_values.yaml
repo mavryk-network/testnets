@@ -1,22 +1,22 @@
 images:
-  tezosFaucet: ghcr.io/oxheadalpha/tezos-faucet:2.2.3
-  tezosFaucetBackend: ghcr.io/oxheadalpha/tezos-faucet-backend:2.2.1
+  mavrykFaucet: ghcr.io/mavryk-network/mavryk-faucet:main
+  mavrykFaucetBackend: ghcr.io/mavryk-network/mavryk-faucet-backend:main
 
 config:
   application:
-    name: "Tezos Ghostnet Faucet"
+    name: "Mavryk Ghostnet Faucet"
     googleCaptchaSiteKey: #filled in by pulumi
     backendUrl: # filled in by pulumi
-    githubRepo: https://github.com/oxheadalpha/tezos-faucet
+    githubRepo: https://github.com/mavryk-network/mavryk-faucet
   network:
     name: # filled in by pulumi
     rpcUrl: # filled in by pulumi
-    faucetAddress: tz1a4GT7THHaGDiTxgXoatDWcZfJ5j29z5RC
+    faucetAddress: mv1NRjkhmeavqVVh716ephuXmaXGe7Y6UyzQ
     viewer: https://ghost.tzstats.com
 
 # Value the server sets for the "Access-Control-Allow-Origin" header for CORS.
 authorizedHost: "" # filled in by pulumi
-# RPC url for the faucet backend. Default value assumes tezos-k8s created an RPC
+# RPC url for the faucet backend. Default value assumes mavryk-k8s created an RPC
 # service in the same namespace. If not set, defaults to `config.network.rpcUrl`.
 backendRpcUrl: https://ghostnet.tezosrpc.midl.dev/ak-a9s8i7spjm3usb
 # If the backend requires CAPTCHA tokens to be submitted.

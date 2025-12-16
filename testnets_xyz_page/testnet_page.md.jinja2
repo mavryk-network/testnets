@@ -1,0 +1,128 @@
+---
+layout: page
+title: {{ v["human_name"] }}
+permalink: /{{ v["human_name"] | lower }}-about
+---
+
+{{ v["description"] }}
+
+| | |
+|-------|---------------------|
+| Public RPC endpoints | {% for r in v["rpc_urls"] -%}[{{ r }}]({{ r }}/chains/main/chain_id)<br/> {%- endfor %} |
+| Faucet | [{{ v["human_name"] }} faucet]({{ v["faucet_url"] }}) |
+| Full network name | `{{ v["chain_name"] }}` |
+| Mavryk docker build | {{ v["docker_build_hyperlinked"] }} |
+| Activated on | {{ network_params["genesis"]["timestamp"] }} |
+{% if "indexers" in v and v["indexers"] | length >0 -%}
+| Block Explorers | {% for i in v["indexers"] -%}[{{ i["name"]}}]({{ i["url"]}}){% if not loop.last %} - {% endif %}
+{%- endfor %} |
+{%- endif %}
+
+
+{{ readme }}
+
+### Install the software
+
+⚠️  If you already have an existing Mavryk installation, do not forget to backup and delete your `~/.mavryk-node` and `~/.mavryk-client`.
+
+{% if v["release"] %}
+#### Download and install Mavryk version {{ v["release"] }}
+
+Follow instructions from the [Mavryk documentation](https://mavryk.gitlab.io/introduction/howtoget.html#installing-binaries).
+{% endif%}
+
+#### Alternative: Use docker
+
+To join {{ v["human_name"] }} with docker, open a shell in the container:
+
+```
+docker run -it --entrypoint=/bin/sh {{ v["docker_build"] }}
+```
+
+#### Alternative: Build the software
+
+⚠️  If this is your first time installing Mavryk, you may need to [install a few dependencies](https://mavryk.gitlab.io/introduction/howtoget.html#setting-up-the-development-environment-from-scratch).
+
+```
+cd
+git clone {{ v["git_repo"] }}
+cd mavryk-protocol
+git checkout {{ v["git_ref"] }}
+opam init # if this is your first time using OPAM
+make build-deps
+eval $(opam env)
+make
+export PATH=$HOME/mavryk-protocol:$PATH
+```
+
+### Join the {{ v["human_name"] }} network
+
+Run the following commands:
+
+```
+{% if k == "ghostnet" -%}
+mavkit-node config init --network {{ k }}
+{% else -%}
+mavkit-node config init --network {{ v["network_url"] }}
+{% endif%}
+mavkit-node run --rpc-addr 127.0.0.1:8732
+```
+
+{% if v["rollup_urls"] | length > 0 %}
+### Ethereum Virtual Machine Rollup
+
+This network is running a bleeding-edge [EVM Rollup](https://docs.etherlink.com/welcome/what-is-etherlink) from the most recent [kernel code](https://gitlab.com/mavryk-network/mavryk-protocol/-/tree/master/etherlink) in the Mavkit repository.
+
+This is not to be confused with [Etherlink](https://docs.etherlink.com/get-started/connect-your-wallet-to-etherlink) which currently runs on Basenet.
+
+[For Etherlink test network, go here](https://docs.etherlink.com/get-started/connect-your-wallet-to-etherlink).
+
+| | |
+|-------|---------------------|
+| EVM RPC URL | [`{{ v["evm_proxy_urls"][0] }}`]({{ v["evm_proxy_urls"][0] }}) |
+| Bare Rollup RPC URL | [`{{ v["rollup_urls"][0] }}`]({{ v["rollup_urls"][0] }}/global/block/head) |
+
+{% endif %}
+
+{% if v["dal_nodes"] %}
+### Data Availability Layer
+
+This network is running [Data Availability Layer](https://mavryk.gitlab.io/shell/dal.html) nodes.
+
+
+The DAL nodes are accessible with the following endpoints:
+
+| | RPC | P2P Endpoint |
+|------------|---------|--------------|
+{% for key, dal_data in v["dal_nodes"].items() -%}
+| {{ dal_data["humanName"] }} | [Link]({{ dal_data["rpc"] }}) | `{{ dal_data["p2p"] }}` |
+{% endfor %}
+
+For more info, read this [blog post from Nomadic Labs](https://research-development.nomadic-labs.com/data-availability-layer-tezos.html).
+{% endif %}
+
+{% if v["category"] in [ "Protocol Testnets", "Long-running Testnets" ] %}
+### Bake on the {{ v["human_name"] }} network
+
+To improve reliability of the chain, you can take part in the consensus by becoming a baker. In that case, you will need some test tokens from the [faucet]({{ v["faucet_url"] }}).
+
+If you are not a bootstrap baker, you need to register your key as a delegate using your alias or `pkh`. For instance:
+```bash=2
+mavkit-client register key mykey as delegate
+```
+
+You may now launch the baker process.
+```bash=3
+mavkit-baker-{{ v["last_baking_daemon"] }} run with local node ~/.mavryk-node mykey --liquidity-baking-toggle-vote pass
+```
+
+You may run the accuser as well:
+```bash=3
+mavkit-accuser-{{ v["last_baking_daemon"] }} run
+```
+
+Note that you need a minimum amount of tez to get baking rights. If you are not a bootstrap baker, it will take you several cycles to start baking.
+
+> 💡 Now that you are baking, you are responsible for the network health. Please ensure that the baking processes will keep running in the background. You may want to use screen, tmux, nohup or systemd. Also make sure that the baking processes will restart when your machine restarts.
+
+{% endif %}

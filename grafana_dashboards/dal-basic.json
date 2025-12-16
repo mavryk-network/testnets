@@ -1468,14 +1468,14 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "deriv(octez_p2p_io_scheduler_total_recv{pod=\"$node_instance\"}[1m]) / 1000",
+               "expr": "deriv(mavkit_p2p_io_scheduler_total_recv{pod=\"$node_instance\"}[1m]) / 1000",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Received data (KB)",
                "refId": "A"
             },
             {
-               "expr": "deriv(octez_p2p_io_scheduler_total_sent{pod=\"$node_instance\"}[1m]) / 1000",
+               "expr": "deriv(mavkit_p2p_io_scheduler_total_sent{pod=\"$node_instance\"}[1m]) / 1000",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Sent data (KB)",
@@ -1563,14 +1563,14 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_p2p_connections_outgoing{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_connections_outgoing{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Outgoing connections",
                "refId": "A"
             },
             {
-               "expr": "octez_p2p_connections_incoming{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_connections_incoming{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Incoming connections",
@@ -1659,21 +1659,21 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_p2p_peers_disconnected{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_peers_disconnected{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Disconnected peers",
                "refId": "A"
             },
             {
-               "expr": "octez_p2p_peers_running{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_peers_running{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Running peers",
                "refId": "B"
             },
             {
-               "expr": "octez_p2p_points_greylisted{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_points_greylisted{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Waiting to reconnect",
@@ -1762,21 +1762,21 @@
          "steppedLine": false,
          "targets": [
             {
-               "expr": "octez_p2p_points_disconnected{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_points_disconnected{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Disconnected points",
                "refId": "A"
             },
             {
-               "expr": "octez_p2p_points_running{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_points_running{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Running points",
                "refId": "B"
             },
             {
-               "expr": "octez_p2p_points_trusted{pod=\"$node_instance\"}",
+               "expr": "mavkit_p2p_points_trusted{pod=\"$node_instance\"}",
                "format": "time_series",
                "intervalFactor": 2,
                "legendFormat": "Trusted points",
@@ -1825,8 +1825,8 @@
    "schemaVersion": 18,
    "style": "dark",
    "tags": [
-      "tezos",
-      "octez",
+      "mavryk",
+      "mavkit",
       "dal"
    ],
    "templating": {
@@ -1903,6 +1903,6 @@
       ]
    },
    "timezone": "browser",
-   "title": "Octez DAL Node Dashboard",
+   "title": "Mavkit DAL Node Dashboard",
    "version": 0
 }

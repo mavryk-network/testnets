@@ -1,10 +1,10 @@
 images:
-  mavrykFaucet: ghcr.io/mavryk-network/mavryk-faucet:main
-  mavrykFaucetBackend: ghcr.io/mavryk-network/mavryk-faucet-backend:main
+  mavrykFaucet: ghcr.io/mavryk-network/mavryk-faucet:mavryk-protocol-refactoring
+  mavrykFaucetBackend: ghcr.io/mavryk-network/mavryk-faucet-backend:mavryk-protocol-refactoring
 
 config:
   application:
-    name: "Mavryk Oxfordnet Faucet"
+    name: "Mavryk Atlasnet Faucet"
     googleCaptchaSiteKey: #filled in by pulumi
     backendUrl: # filled in by pulumi
     githubRepo: https://github.com/mavryk-network/mavryk-faucet

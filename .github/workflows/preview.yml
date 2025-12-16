@@ -4,14 +4,14 @@ on:
     branches:
       - main
 jobs:
-  preview:
-    name: Pulumi Preview
-    # don't do this on fork - this would not work because secrets would not be accessible
-    if: github.event.pull_request.head.repo.full_name == github.repository
-    uses: ./.github/workflows/_pulumi.yml
-    secrets: inherit
-    with:
-      pulumi-command: preview
+  # preview:
+  #   name: Pulumi Preview
+  #   # don't do this on fork - this would not work because secrets would not be accessible
+  #   if: github.event.pull_request.head.repo.full_name == github.repository
+  #   uses: ./.github/workflows/_pulumi.yml
+  #   secrets: inherit
+  #   with:
+  #     pulumi-command: preview
 
   validate-yaml:
     name: Validate YAML Files
