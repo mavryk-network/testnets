@@ -22,7 +22,7 @@ Testnets deployed specifically to test new Mavryk protocol proposals.
 
 | | Activated on | Faucet |
 |-------|---------------------|--|
-| [Atlasnet](/atlasnet-about) | `2025-03-12` | [Faucet](https://atlasnet.faucet.mavryk.network) |
+| [Boreasnet](/boreasnet-about) | `2025-03-12` | [Faucet](https://boreasnet.faucet.mavryk.network) |
 
 
 

@@ -1,24 +1,24 @@
 {
-  "atlasnet": {
+  "boreasnet": {
     "category": "Protocol Testnets",
     "chain_name": "MAVRYK_ATLASNET_2024-02-23T10:39:51Z",
-    "description": "Test Chain for the Atlas Protocol Proposal.",
+    "description": "Test Chain for the Boreas Protocol Proposal.",
     "docker_build": "mavrykdynamics/mavryk:mavkit-v20.3-rc2",
-    "faucet_url": "https://atlasnet.faucet.mavryk.network",
-    "git_ref": "b1e1def27039b8cede461b6614af1addefbd69da",
-    "human_name": "Atlasnet",
+    "faucet_url": "https://boreasnet.faucet.mavryk.network",
+    "git_ref": "mavkit-v20.3-rc2",
+    "human_name": "Boreasnet",
     "indexers": [
       {
         "name": "Nexus",
-        "url": "https://atlasnet.nexus.mavryk.org"
+        "url": "https://boreasnet.nexus.mavryk.org"
       }
     ],
-    "last_baking_daemon": "PtAtLas",
+    "last_baking_daemon": "PtBoreas",
     "masked_from_main_page": false,
-    "network_url": "https://testnets.mavryk.network/atlasnet",
-    "rpc_url": "https://atlasnet.rpc.mavryk.network",
+    "network_url": "https://testnets.mavryk.network/boreasnet",
+    "rpc_url": "https://boreasnet.rpc.mavryk.network",
     "rpc_urls": [
-      "https://atlasnet.rpc.mavryk.network"
+      "https://boreasnet.rpc.mavryk.network"
     ],
     "activated_on": "2025-03-12"
   },
@@ -28,7 +28,7 @@
     "description": "Basenet is the long-running testnet for Mavryk.",
     "docker_build": "mavrykdynamics/mavryk:mavkit-v20.3",
     "faucet_url": "https://basenet.faucet.mavryk.network",
-    "git_ref": "b1e1def27039b8cede461b6614af1addefbd69da",
+    "git_ref": "mavkit-v20.3",
     "human_name": "Basenet",
     "indexers": [
       {

@@ -40,7 +40,7 @@ docker run -it --entrypoint=/bin/sh mavrykdynamics/mavryk:mavkit-v20.3
 cd
 git clone git@gitlab.com:mavryk-network/mavryk-protocol.git
 cd mavryk-protocol
-git checkout b1e1def27039b8cede461b6614af1addefbd69da
+git checkout mavkit-v20.3
 opam init # if this is your first time using OPAM
 make build-deps
 eval $(opam env)
