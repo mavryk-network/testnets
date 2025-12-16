@@ -81,4 +81,3 @@ To build the website locally, from the top-level dir of the repo:
 1. run `bundle exec jekyll serve`
 
 The website will be rendered on `localhost:4000`.
-
